@@ -1,27 +1,30 @@
 <?php
 
+include 'vendor/autoload.php';
  // Tax scheme
- $taxScheme = (new TaxScheme())
+ $taxScheme = (new  \Ishifoev\Invoice\Party\TaxScheme())
  ->setId('VAT');
 
+
   // Client contact node
-  $clientContact = (new Contact())
+  $clientContact = (new \Ishifoev\Invoice\Account\Contact())
    ->setName('Client name')
    ->setTelephone('908-99-74-74');
 
 
-
-$country = (new Country())
+$country = (new \Ishifoev\Invoice\Account\Country())
             ->setIdentificationCode('NL');
 
+         
         // Full address
-$address = (new PostalAddress())
+$address = (new \Ishifoev\Invoice\Account\PostalAddress())
                 ->setStreetName('Lisk Center Utreht')
                 ->setAddionalStreetName('De Burren')
                 ->setCityName('Utreht')
                 ->setPostalZone('3521')
                 ->setCountry($country);
-
+var_dump($address);
+exit;
 
 $financialInstitutionBranch = (new FinancialInstitutionBranch())
                 ->setId('RABONL2U');

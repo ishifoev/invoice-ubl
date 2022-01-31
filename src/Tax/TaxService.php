@@ -1,5 +1,7 @@
 <?php
 
+namespace Ishifoev\Invoice\Tax;
+
 class TaxService {
     private $id;
 

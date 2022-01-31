@@ -1,5 +1,7 @@
 <?php
 
+namespace Ishifoev\Invoice\Tax;
+
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 

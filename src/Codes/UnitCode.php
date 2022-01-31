@@ -1,6 +1,6 @@
 <?php
 
-namespace Ishifoev\Invoice\UnitCode;
+namespace Ishifoev\Invoice\Codes;
 
 class UnitCode
 {

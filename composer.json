@@ -12,7 +12,8 @@
     ],
     "require": {
         "php": "^7.1",
-        "sabre/xml": "^2.1"
+        "sabre/xml": "^2.1",
+        "ishifoev/invoice-ubl": "^1.01"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.0"

@@ -1,5 +1,7 @@
 <?php
 
+namespace Ishifoev\Invoice\Tax;
+
 use InvalidArgumentException as InvalidArgumentException;
 
 use Sabre\Xml\Writer;

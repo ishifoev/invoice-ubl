@@ -8,7 +8,6 @@ use Sabre\Xml\XmlSerializable;
 use DateTime as DateTime;
 use InvalidArgumentException as InvalidArgumentException;
 
-require 'InvoiceTypeCode.php';
 
 class Invoice implements XmlSerializable
 {
