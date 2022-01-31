@@ -5,8 +5,6 @@ namespace Ishifoev\Invoice\Account;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 
-require 'Schema.php';
-
 class PostalAddress implements XmlSerializable {
     private $streetName;
     private $additionalStreetName;
