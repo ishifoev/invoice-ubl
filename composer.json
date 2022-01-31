@@ -1,0 +1,29 @@
+{
+    "name": "ishifoev/invoice-ubl",
+    "description": "A library for valid EN16931 UBL files",
+    "homepage": "https://github.com/ishifoev/invoice-ubl",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ismoil Shifoev",
+            "email": "ismail94.94@mail.ru",
+            "role": "Software Engineer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "sabre/xml": "^2.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ishifoev\\Invoice\\": ["src"],
+            "Ishifoev\\Invoice\\Tests": ["tests"]
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
+    }
+}
