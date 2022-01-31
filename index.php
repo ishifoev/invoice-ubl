@@ -23,23 +23,24 @@ $address = (new \Ishifoev\Invoice\Account\PostalAddress())
                 ->setCityName('Utreht')
                 ->setPostalZone('3521')
                 ->setCountry($country);
-var_dump($address);
-exit;
 
-$financialInstitutionBranch = (new FinancialInstitutionBranch())
+
+$financialInstitutionBranch = (new \Ishifoev\Invoice\Financial\FinancialInstitutionBranch())
                 ->setId('RABONL2U');
+         
 
-$payeeFinancialAccount = (new PayeeFinancialAccount())
+$payeeFinancialAccount = (new \Ishifoev\Invoice\Financial\PayeeFinancialAccount())
                ->setFinancialInstitutionBranch($financialInstitutionBranch)
                 ->setName('Customer Account Holder')
                 ->setId('NL00RABO0000000000');
+              
 
-
-$paymentMeans = (new PaymentMeans())
+$paymentMeans = (new  \Ishifoev\Invoice\Payment\PaymentMeans())
                 ->setPayeeFinancialAccount($payeeFinancialAccount)
                 ->setPaymentMeansCode(31, [])
                 ->setPaymentId('our invoice 1234');
-
+                var_dump($paymentMeans);
+                exit;
  // Supplier company node
  $supplierLegalEntity = (new LegalEntity())		// $doc = new DOMDocument();
 		// $doc->load($path);
