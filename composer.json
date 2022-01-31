@@ -1,5 +1,5 @@
 {
-    "name": "ishifoev/invoice-ubl",
+    "name": "test/invoice-ubl",
     "description": "A library for valid EN16931 UBL files",
     "homepage": "https://github.com/ishifoev/invoice-ubl",
     "license": "MIT",
