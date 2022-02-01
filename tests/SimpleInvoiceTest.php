@@ -16,11 +16,11 @@ class SimpleInvoiceTest extends TestCase {
     public function testIfXMLIsValid()
     {
         //Address Country
-        $country = (new Country())
+        $country = (new  \Ishifoev\Invoice\Account\Country())
         ->setIdentificationCode('NL');
 
         //Full Address
-        $address = (new PostalAddress())
+        $address = (new  \Ishifoev\Invoice\Account\PostalAddress())
                 ->setStreetName('Lisk Center Utreht')
                 ->setAddionalStreetName('De Burren')
                 ->setCityName('Utreht')
@@ -28,52 +28,52 @@ class SimpleInvoiceTest extends TestCase {
                 ->setCountry($country);
 
         // Supplier company node
-        $supplierCompany = (new Party())
+        $supplierCompany = (new  \Ishifoev\Invoice\Account\Party())
         ->setName('Supplier Company Name')
         ->setPhysicalLocation($address)
         ->setPostalAddress($address);
            
         // Client contact node
-        $clientContact = (new Contact())
+        $clientContact = (new  \Ishifoev\Invoice\Account\Contact())
             ->setName('Client name')
             ->setTelephone('908-99-74-74');
 
             // Client company node
-        $clientCompany = (new Party())
+        $clientCompany = (new  \Ishifoev\Invoice\Party\Party())
             ->setName('My client')
             ->setPostalAddress($address)
             ->setContact($clientContact);
-            $legalMonetaryTotal = (new LegalMonetaryTotal())
+            $legalMonetaryTotal = (new  \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
             ->setPayableAmount(10 + 2)
             ->setAllowanceTotalAmount(0);
 
         // Tax scheme
-        $taxScheme = (new TaxScheme())
+        $taxScheme = (new  \Ishifoev\Invoice\Party\TaxScheme())
             ->setId(0);
 
         // Product
-        $productItem = (new Item())
+        $productItem = (new  \Ishifoev\Invoice\Item())
             ->setName('Product Name')
             ->setDescription('Product Description')
             ->setSellersItemIdentification('SELLERID');
 
         // Price
-        $price = (new Price())
+        $price = (new  \Ishifoev\Invoice\Payment\Price())
             ->setBaseQuantity(1)
             ->setUnitCode(UnitCode::UNIT)
             ->setPriceAmount(10);
 
         // Invoice Line tax totals
-        $lineTaxTotal = (new TaxTotal())
+        $lineTaxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxAmount(2.1);
 
         // InvoicePeriod
-        $invoicePeriod = (new InvoicePeriod())
+        $invoicePeriod = (new  \Ishifoev\Invoice\Invoice\InvoicePeriod())
             ->setStartDate(new \DateTime());
         
         $invoiceLines = [];
 
-        $invoiceLines[] = (new InvoiceLine())
+        $invoiceLines[] = (new  \Ishifoev\Invoice\Invoice\InvoiceLine())
         ->setId(0)
         ->setItem($productItem)
         ->setInvoicePeriod($invoicePeriod)
@@ -82,7 +82,7 @@ class SimpleInvoiceTest extends TestCase {
         ->setTaxTotal($lineTaxTotal)
         ->setInvoicedQuantity(1);
 
-        $invoiceLines[] = (new InvoiceLine())
+        $invoiceLines[] = (new  \Ishifoev\Invoice\Invoice\InvoiceLine())
             ->setId(0)
             ->setItem($productItem)
             ->setInvoicePeriod($invoicePeriod)
@@ -92,24 +92,24 @@ class SimpleInvoiceTest extends TestCase {
             ->setInvoicedQuantity(1);
 
         // Total Taxes
-        $taxCategory = (new TaxCategory())
+        $taxCategory = (new  \Ishifoev\Invoice\Tax\TaxCategory())
             ->setId(0)
             ->setName('VAT21%')
             ->setPercent(.21)
             ->setTaxScheme($taxScheme);
 
-        $taxSubTotal = (new TaxSubTotal())
+        $taxSubTotal = (new \Ishifoev\Invoice\Tax\TaxSubTotal())
             ->setTaxableAmount(10)
             ->setTaxAmount(2.1)
             ->setTaxCategory($taxCategory);
 
 
-        $taxTotal = (new TaxTotal())
+        $taxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxSubtotal($taxSubTotal)
             ->setTaxAmount(2.1);
 
           // Invoice object
-          $invoice = (new Invoice())
+          $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
           ->setId(1234)
           ->setCopyIndicator(false)
           ->setIssueDate(new \DateTime())
@@ -120,7 +120,7 @@ class SimpleInvoiceTest extends TestCase {
           ->setLegalMonetaryTotal($legalMonetaryTotal)
           ->setTaxTotal($taxTotal);
 
-            $generateInvoice = new GenerateInvoice();
+            $generateInvoice = new  \Ishifoev\Invoice\Invoice\GenerateInvoice();
             $outputXMLString = $generateInvoice->invoice($invoice);
 
             $dom = new \DOMDocument;

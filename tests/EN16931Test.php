@@ -11,21 +11,21 @@ class EN16931Test extends TestCase
 public function testIfXMLIsValid()
 {
  // Tax scheme
- $taxScheme = (new TaxScheme())
+ $taxScheme = (new  \Ishifoev\Invoice\Party\TaxScheme())
  ->setId('VAT');
 
   // Client contact node
-  $clientContact = (new Contact())
+  $clientContact = (new  \Ishifoev\Invoice\Account\Contact())
    ->setName('Client name')
    ->setTelephone('908-99-74-74');
 
 
 
-$country = (new Country())
+$country = (new  \Ishifoev\Invoice\Account\Country())
             ->setIdentificationCode('NL');
 
         // Full address
-$address = (new PostalAddress())
+$address = (new  \Ishifoev\Invoice\Account\PostalAddress())
                 ->setStreetName('Lisk Center Utreht')
                 ->setAddionalStreetName('De Burren')
                 ->setCityName('Utreht')
@@ -33,32 +33,32 @@ $address = (new PostalAddress())
                 ->setCountry($country);
 
 
-$financialInstitutionBranch = (new FinancialInstitutionBranch())
+$financialInstitutionBranch = (new  \Ishifoev\Invoice\Financial\FinancialInstitutionBranch())
                 ->setId('RABONL2U');
 
-$payeeFinancialAccount = (new PayeeFinancialAccount())
+$payeeFinancialAccount = (new  \Ishifoev\Invoice\Payment\PayeeFinancialAccount())
                ->setFinancialInstitutionBranch($financialInstitutionBranch)
                 ->setName('Customer Account Holder')
                 ->setId('NL00RABO0000000000');
 
 
-$paymentMeans = (new PaymentMeans())
+$paymentMeans = (new  \Ishifoev\Invoice\Payment\PaymentMeans())
                 ->setPayeeFinancialAccount($payeeFinancialAccount)
                 ->setPaymentMeansCode(31, [])
                 ->setPaymentId('our invoice 1234');
 
  // Supplier company node
- $supplierLegalEntity = (new LegalEntity())		// $doc = new DOMDocument();
+ $supplierLegalEntity = (new  \Ishifoev\Invoice\Legal\LegalEntity())		// $doc = new DOMDocument();
 		// $doc->load($path);
  ->setRegistrationNumber('PonderSource')
  ->setCompanyId('NL123456789');
 
 
-$supplierPartyTaxScheme = (new PartyTaxScheme())
+$supplierPartyTaxScheme = (new  \Ishifoev\Invoice\Party\PartyTaxScheme())
  ->setTaxScheme($taxScheme)
  ->setCompanyId('NL123456789');
 
-$supplierCompany = (new Party())
+$supplierCompany = (new  \Ishifoev\Invoice\Party\Party())
  ->setEndPointId('7300010000001', '0007')
  ->setPartyIdentificationId('99887766')
  ->setName('PonderSource')
@@ -69,15 +69,15 @@ $supplierCompany = (new Party())
 
 
 // Client company node
-$clientLegalEntity = (new LegalEntity())
+$clientLegalEntity = (new  \Ishifoev\Invoice\Legal\LegalEntity())
  ->setRegistrationNumber('Client Company Name')
  ->setCompanyId('Client Company Registration');
 
-$clientPartyTaxScheme = (new PartyTaxScheme())
+$clientPartyTaxScheme = (new  \Ishifoev\Invoice\Party\PartyTaxScheme())
  ->setTaxScheme($taxScheme)
  ->setCompanyId('BE123456789');
 
-$clientCompany = (new Party())
+$clientCompany = (new  \Ishifoev\Invoice\Party\Party())
 ->setPartyIdentificationId('9988217')
 ->setEndPointId('7300010000002', '0002')
  ->setName('Client Company Name')
@@ -86,41 +86,41 @@ $clientCompany = (new Party())
  ->setPostalAddress($address)
  ->setContact($clientContact);
 
-$legalMonetaryTotal = (new LegalMonetaryTotal())
+$legalMonetaryTotal = (new  \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
  ->setPayableAmount(10 + 2.1)
  ->setAllowanceTotalAmount(0)
  ->setTaxInclusiveAmount(10 + 2.1)
  ->setLineExtensionAmount(10)
  ->setTaxExclusiveAmount(10);
 
- $classifiedTaxCategory = (new ClassifiedTaxCategory())
+ $classifiedTaxCategory = (new  \Ishifoev\Invoice\Tax\ClassifiedTaxCategory())
  ->setId('S')
  ->setPercent(21.00)
  ->setTaxScheme($taxScheme);
 
   // Product
-  $productItem = (new Item())
+  $productItem = (new \Ishifoev\Invoice\Item())
   ->setName('Product Name')
   ->setClassifiedTaxCategory($classifiedTaxCategory)
   ->setDescription('Product Description');
 
 // Price
- $price = (new Price())
+ $price = (new  \Ishifoev\Invoice\Payment\Price())
        ->setBaseQuantity(1)
        ->setUnitCode(UnitCode::UNIT)
        ->setPriceAmount(10);
 
 // Invoice Line tax totals
-$lineTaxTotal = (new TaxTotal())
+$lineTaxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxAmount(2.1);
 
 
 // InvoicePeriod
-$invoicePeriod = (new InvoicePeriod())
+$invoicePeriod = (new  \Ishifoev\Invoice\Invoice\InvoicePeriod())
 ->setStartDate(new \DateTime());
 
 // Invoice Line(s)
-$invoiceLine = (new InvoiceLine())
+$invoiceLine = (new  \Ishifoev\Invoice\Invoice\InvoiceLine())
 ->setId(0)
 ->setItem($productItem)
 ->setPrice($price)
@@ -130,49 +130,49 @@ $invoiceLine = (new InvoiceLine())
 
 $invoiceLines = [$invoiceLine];
 
-$taxCategory = (new TaxCategory())
+$taxCategory = (new  \Ishifoev\Invoice\Invoice\TaxCategory())
             ->setId('S', [])
             ->setPercent(21.00)
             ->setTaxScheme($taxScheme);
 
-$allowanceCharge = (new AllowanceCharge())
+$allowanceCharge = (new  \Ishifoev\Invoice\AllowanceCharge())
 ->setChargeIndicator(true)
 ->setAllowanceReason('Insurance')
 ->setAmount(10)
 ->setTaxCategory($taxCategory);
 
- $taxSubTotal = (new TaxSubTotal())
+ $taxSubTotal = (new  \Ishifoev\Invoice\Tax\TaxSubTotal())
             ->setTaxableAmount(10)
             ->setTaxAmount(2.1)
             ->setTaxCategory($taxCategory);
 
 
-$taxTotal = (new TaxTotal())
+$taxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxSubtotal($taxSubTotal)
             ->setTaxAmount(2.1);
    // Payment Terms
-$paymentTerms = (new PaymentTerms())
+$paymentTerms = (new  \Ishifoev\Invoice\Payment\PaymentTerms())
    ->setNote('30 days net');
 
 // Delivery
-$deliveryLocation = (new PostalAddress())
+$deliveryLocation = (new  \Ishifoev\Invoice\Account\PostalAddress())
 ->setStreetName('Delivery street 2')
 ->setAddionalStreetName('Building 56')
 ->setCityName('Utreht')
 ->setPostalZone('3521')
 ->setCountry($country);
 
-$delivery = (new Delivery())
+$delivery = (new  \Ishifoev\Invoice\Account\Delivery())
   ->setActualDeliveryDate(new \DateTime())
   ->setDeliveryLocation($deliveryLocation);
 
 
-$orderReference = (new OrderReference())
+$orderReference = (new  \Ishifoev\Invoice\Payment\OrderReference())
   ->setId('5009567')
   ->setSalesOrderId('tRST-tKhM');
 
    // Invoice object
-   $invoice = (new Invoice())
+   $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
    ->setProfileID('urn:fdc:peppol.eu:2017')
    ->setCustomazationID('urn:cen.eu:en16931:2017')
    ->setId(1234)
@@ -192,7 +192,7 @@ $orderReference = (new OrderReference())
    ->setOrderReference($orderReference)
    ->setTaxTotal($taxTotal);
 
-   $generateInvoice = new GenerateInvoice();
+   $generateInvoice = new  \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);

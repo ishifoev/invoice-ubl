@@ -32,7 +32,7 @@ class CurrencyCodeTest extends TestCase {
         ->setName('My client')
         ->setPostalAddress($address);
 
-        $legalMonetaryTotal = (new \Ishifoev\Invoice\Party\LegalMonetaryTotal())
+        $legalMonetaryTotal = (new \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
         ->setPayableAmount(10 + 2)
         ->setAllowanceTotalAmount(0);
 

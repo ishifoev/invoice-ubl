@@ -9,11 +9,11 @@ class DueDateTest extends TestCase {
     /**@test */
     public function testXmlIfIsValid() {
         //Address Country
-        $country = (new Country())
+        $country = (new \Ishifoev\Invoice\Account\Country())
             ->setIdentificationCode('NL');
 
         //Full Address
-        $address = (new PostalAddress())
+        $address = (new \Ishifoev\Invoice\Account\PostalAddress())
                 ->setStreetName('Lisk Center Utreht')
                 ->setAddionalStreetName('De Burren')
                 ->setCityName('Utreht')
@@ -21,41 +21,41 @@ class DueDateTest extends TestCase {
                 ->setCountry($country);
 
         // Supplier company node
-        $supplierCompany = (new Party())
+        $supplierCompany = (new  \Ishifoev\Invoice\Party\Party())
         ->setName('Supplier Company Name')
         ->setPhysicalLocation($address)
         ->setPostalAddress($address);
 
         // Client company node
-        $clientCompany = (new Party())
+        $clientCompany = (new  \Ishifoev\Invoice\Party\Party())
         ->setName('My client')
         ->setPostalAddress($address);
 
-        $legalMonetaryTotal = (new LegalMonetaryTotal())
+        $legalMonetaryTotal = (new  \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
         ->setPayableAmount(10 + 2)
         ->setAllowanceTotalAmount(0);
 
          // Tax scheme
-         $taxScheme = (new TaxScheme())
+         $taxScheme = (new  \Ishifoev\Invoice\Party\TaxScheme())
          ->setId(0);
 
         // Price
-        $price = (new Price())
+        $price = (new  \Ishifoev\Invoice\Payment\Price())
         ->setBaseQuantity(1)
         ->setUnitCode(UnitCode::UNIT)
         ->setPriceAmount(10);
 
         // Invoice Line tax totals
-        $lineTaxTotal = (new TaxTotal())
+        $lineTaxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxAmount(2.1);
 
         // Product
-        $productItem = (new Item())
+        $productItem = (new  \Ishifoev\Invoice\Item())
           ->setName('Product Name')
           ->setDescription('Product Description');
 
         // Invoice Line(s)
-        $invoiceLine = (new InvoiceLine())
+        $invoiceLine = (new \Ishifoev\Invoice\Invoice\InvoiceLine())
             ->setId(0)
             ->setItem($productItem)
             ->setPrice($price)
@@ -65,23 +65,23 @@ class DueDateTest extends TestCase {
         $invoiceLines = [$invoiceLine];
 
         // Total Taxes
-        $taxCategory = (new TaxCategory())
+        $taxCategory = (new \Ishifoev\Invoice\Tax\TaxCategory())
             ->setId(0)
             ->setName('VAT21%')
             ->setPercent(.21)
             ->setTaxScheme($taxScheme);
 
-        $taxSubTotal = (new TaxSubTotal())
+        $taxSubTotal = (new  \Ishifoev\Invoice\Tax\TaxSubTotal())
             ->setTaxableAmount(10)
             ->setTaxAmount(2.1)
             ->setTaxCategory($taxCategory);
 
-        $taxTotal = (new TaxTotal())
+        $taxTotal = (new  \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxSubtotal($taxSubTotal)
             ->setTaxAmount(2.1);
 
         // Invoice object
-        $invoice = (new Invoice())
+        $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
             ->setUBLVersionID('2.2')
             ->setId(1234)
             ->setCopyIndicator(false)
