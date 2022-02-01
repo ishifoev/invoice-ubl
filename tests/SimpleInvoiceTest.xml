@@ -5,7 +5,7 @@
  <cbc:ProfileID/>
  <cbc:ID>1234</cbc:ID>
  <cbc:CopyIndicator>false</cbc:CopyIndicator>
- <cbc:IssueDate>2022-01-13</cbc:IssueDate>
+ <cbc:IssueDate>2022-02-01</cbc:IssueDate>
  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
  <cac:AccountingSupplierParty>
@@ -84,7 +84,7 @@
   <cbc:LineExtensionAmount currencyID="EUR">0.00</cbc:LineExtensionAmount>
   <cbc:AccountingCost>Product 123</cbc:AccountingCost>
   <cac:InvoicePeriod>
-   <cbc:StartDate>2022-01-13</cbc:StartDate>
+   <cbc:StartDate>2022-02-01</cbc:StartDate>
   </cac:InvoicePeriod>
   <cac:TaxTotal>
    <cbc:TaxAmount currencyID="EUR">2.10</cbc:TaxAmount>
@@ -107,7 +107,7 @@
   <cbc:LineExtensionAmount currencyID="EUR">0.00</cbc:LineExtensionAmount>
   <cbc:AccountingCostCode>Product 123</cbc:AccountingCostCode>
   <cac:InvoicePeriod>
-   <cbc:StartDate>2022-01-13</cbc:StartDate>
+   <cbc:StartDate>2022-02-01</cbc:StartDate>
   </cac:InvoicePeriod>
   <cac:TaxTotal>
    <cbc:TaxAmount currencyID="EUR">2.10</cbc:TaxAmount>

@@ -5,8 +5,8 @@
  <cbc:ProfileID/>
  <cbc:ID>1234</cbc:ID>
  <cbc:CopyIndicator>false</cbc:CopyIndicator>
- <cbc:IssueDate>2022-01-13</cbc:IssueDate>
- <cbc:DueDate>2022-01-13</cbc:DueDate>
+ <cbc:IssueDate>2022-02-01</cbc:IssueDate>
+ <cbc:DueDate>2022-02-01</cbc:DueDate>
  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
  <cac:AccountingSupplierParty>
