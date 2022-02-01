@@ -86,7 +86,7 @@ class DueDateTest extends TestCase {
             ->setId(1234)
             ->setCopyIndicator(false)
             ->setIssueDate(new \DateTime())
-            ->setInvoiceTypeCode(InvoiceTypeCode::INVOICE)
+            ->setInvoiceTypeCode(\Ishifoev\Invoice\Invoice\InvoiceTypeCode::INVOICE)
             ->setDueDate(new \DateTime())
             ->setAccountingSupplierParty($supplierCompany)
             ->setAccountingCustomerParty($clientCompany)

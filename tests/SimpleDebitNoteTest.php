@@ -84,7 +84,7 @@ class SimpleDebitNoteTest extends TestCase {
            ->setTaxAmount(2.1);
 
        // Invoice object
-       $invoice = (new  \Ishifoev\Invoice\Invocie\Invoice())
+       $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
            ->setId(1234)
            ->setCopyIndicator(false)
            ->setIssueDate(new \DateTime())
