@@ -39,27 +39,27 @@ $paymentMeans = (new  \Ishifoev\Invoice\Payment\PaymentMeans())
                 ->setPayeeFinancialAccount($payeeFinancialAccount)
                 ->setPaymentMeansCode(31, [])
                 ->setPaymentId('our invoice 1234');
-                var_dump($paymentMeans);
-                exit;
+
  // Supplier company node
- $supplierLegalEntity = (new LegalEntity())		// $doc = new DOMDocument();
+ $supplierLegalEntity = (new \Ishifoev\Invoice\Legal\LegalEntity())		// $doc = new DOMDocument();
 		// $doc->load($path);
  ->setRegistrationNumber('PonderSource')
  ->setCompanyId('NL123456789');
 
 
-$supplierPartyTaxScheme = (new PartyTaxScheme())
+$supplierPartyTaxScheme = (new \Ishifoev\Invoice\Party\PartyTaxScheme())
  ->setTaxScheme($taxScheme)
  ->setCompanyId('NL123456789');
 
-$supplierCompany = (new Party())
+$supplierCompany = (new \Ishifoev\Invoice\Party\Party())
  ->setEndPointId('7300010000001', '0007')
  ->setPartyIdentificationId('99887766')
  ->setName('PonderSource')
  ->setLegalEntity($supplierLegalEntity)
  ->setPartyTaxScheme($supplierPartyTaxScheme)
  ->setPostalAddress($address);
-
+ var_dump($supplierCompany);
+ exit;
 
 
 // Client company node

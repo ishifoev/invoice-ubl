@@ -4,6 +4,8 @@ namespace Ishifoev\Invoice\Party;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Legal\LegalEntity;
+use \Ishifoev\Invoice\Account\PostalAddress;
 
 class Party implements XmlSerializable
 {
