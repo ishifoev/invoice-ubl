@@ -107,25 +107,27 @@ $legalMonetaryTotal = (new \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
        ->setBaseQuantity(1)
        ->setUnitCode(\Ishifoev\Invoice\Payment\UnitCode::UNIT)
        ->setPriceAmount(10);
-       var_dump($price);
-       exit;
+     
 // Invoice Line tax totals
-$lineTaxTotal = (new TaxTotal())
+$lineTaxTotal = (new Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxAmount(2.1);
-
+           
 
 // InvoicePeriod
-$invoicePeriod = (new InvoicePeriod())
+$invoicePeriod = (new Ishifoev\Invoice\Invoice\InvoicePeriod())
 ->setStartDate(new \DateTime());
 
 // Invoice Line(s)
-$invoiceLine = (new InvoiceLine())
+$invoiceLine = (new Ishifoev\Invoice\Invoice\InvoiceLine())
 ->setId(0)
 ->setItem($productItem)
 ->setPrice($price)
 ->setInvoicePeriod($invoicePeriod)
 ->setLineExtensionAmount(10)
 ->setInvoicedQuantity(1);
+
+var_dump($invoiceLine);
+exit;
 
 $invoiceLines = [$invoiceLine];
 
