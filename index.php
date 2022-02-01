@@ -101,14 +101,14 @@ $legalMonetaryTotal = (new \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
   ->setName('Product Name')
   ->setClassifiedTaxCategory($classifiedTaxCategory)
   ->setDescription('Product Description');
-  var_dump($productItem);
-  exit;
-// Price
- $price = (new Price())
-       ->setBaseQuantity(1)
-       ->setUnitCode(UnitCode::UNIT)
-       ->setPriceAmount(10);
 
+// Price
+ $price = (new \Ishifoev\Invoice\Payment\Price())
+       ->setBaseQuantity(1)
+       ->setUnitCode(\Ishifoev\Invoice\Payment\UnitCode::UNIT)
+       ->setPriceAmount(10);
+       var_dump($price);
+       exit;
 // Invoice Line tax totals
 $lineTaxTotal = (new TaxTotal())
             ->setTaxAmount(2.1);
