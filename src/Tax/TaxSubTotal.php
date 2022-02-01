@@ -5,6 +5,7 @@ namespace Ishifoev\Invoice\Tax;
 use InvalidArgumentException as InvalidArgumentException;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Tax\TaxCategory;
 
 class TaxSubTotal implements XmlSerializable {
     private $taxableAmount;

@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Tax\TaxCategory;
 
 class AllowanceCharge implements XmlSerializable {
     private $chargeIndicator;

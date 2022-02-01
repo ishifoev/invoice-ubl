@@ -6,6 +6,7 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 
 use DateTime as DateTime;
+use Ishifoev\Invoice\Account\PostalAddress;
 
 class Delivery implements XmlSerializable {
     private $actualDeliveryDate;

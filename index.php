@@ -126,54 +126,54 @@ $invoiceLine = (new Ishifoev\Invoice\Invoice\InvoiceLine())
 ->setLineExtensionAmount(10)
 ->setInvoicedQuantity(1);
 
-var_dump($invoiceLine);
-exit;
+
 
 $invoiceLines = [$invoiceLine];
 
-$taxCategory = (new TaxCategory())
+$taxCategory = (new \Ishifoev\Invoice\Tax\TaxCategory())
             ->setId('S', [])
             ->setPercent(21.00)
             ->setTaxScheme($taxScheme);
-
-$allowanceCharge = (new AllowanceCharge())
+            var_dump($taxCategory);
+            exit;
+$allowanceCharge = (new \Ishifoev\Invoice\AllowanceCharge())
 ->setChargeIndicator(true)
 ->setAllowanceReason('Insurance')
 ->setAmount(10)
 ->setTaxCategory($taxCategory);
 
- $taxSubTotal = (new TaxSubTotal())
+ $taxSubTotal = (new \Ishifoev\Invoice\Tax\TaxSubTotal())
             ->setTaxableAmount(10)
             ->setTaxAmount(2.1)
             ->setTaxCategory($taxCategory);
 
 
-$taxTotal = (new TaxTotal())
+$taxTotal = (new \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxSubtotal($taxSubTotal)
             ->setTaxAmount(2.1);
    // Payment Terms
-$paymentTerms = (new PaymentTerms())
+$paymentTerms = (new \Ishifoev\Invoice\Payment\PaymentTerms())
    ->setNote('30 days net');
 
 // Delivery
-$deliveryLocation = (new PostalAddress())
+$deliveryLocation = (new \Ishifoev\Invoice\Account\PostalAddress())
 ->setStreetName('Delivery street 2')
 ->setAddionalStreetName('Building 56')
 ->setCityName('Utreht')
 ->setPostalZone('3521')
 ->setCountry($country);
 
-$delivery = (new Delivery())
+$delivery = (new \Ishifoev\Invoice\Account\Delivery())
   ->setActualDeliveryDate(new \DateTime())
   ->setDeliveryLocation($deliveryLocation);
 
 
-$orderReference = (new OrderReference())
+$orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   ->setId('5009567')
   ->setSalesOrderId('tRST-tKhM');
 
    // Invoice object
-   $invoice = (new Invoice())
+   $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
    ->setProfileID('urn:fdc:peppol.eu:2017')
    ->setCustomazationID('urn:cen.eu:en16931:2017')
    ->setId(1234)
