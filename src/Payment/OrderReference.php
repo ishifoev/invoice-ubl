@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Payment;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class OrderReference implements XmlSerializable {
     private $id;
