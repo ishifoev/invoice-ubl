@@ -5,6 +5,8 @@ namespace Ishifoev\Invoice\Tax;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Party\TaxScheme;
+use Ishifoev\Invoice\Schema;
+
 
 use InvalidArgumentException as InvalidArgumentException;
 
