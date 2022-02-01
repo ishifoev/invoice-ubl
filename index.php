@@ -197,8 +197,6 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
 
   $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
-  var_dump($outputXMLString);
-  exit;
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
   //$sign = new Signature;
@@ -212,6 +210,6 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   $response = $client->validate(['XML' => $outputXMLString, 'VESID' => 'eu.cen.en16931:ubl:1.3.7']);
   echo json_encode($response);
 
- $deserialize = new DeserializeInvoice();
+ $deserialize = new \Ishifoev\Invoice\DeserializeInvoice();
  var_dump($deserialize->deserializeXML($outputXMLString));
  exit;
