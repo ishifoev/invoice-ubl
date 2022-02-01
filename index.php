@@ -2,7 +2,7 @@
 
 include 'vendor/autoload.php';
  // Tax scheme
- $taxScheme = (new  \Ishifoev\Invoice\Party\TaxScheme())
+ $taxScheme = (new \Ishifoev\Invoice\Party\TaxScheme())
  ->setId('VAT');
 
 
@@ -82,21 +82,21 @@ $clientCompany = (new \Ishifoev\Invoice\Party\Party())
  ->setPartyTaxScheme($clientPartyTaxScheme)
  ->setPostalAddress($address)
  ->setContact($clientContact);
- var_dump($clientCompany);
- exit;
- 
-$legalMonetaryTotal = (new LegalMonetaryTotal())
+
+$legalMonetaryTotal = (new \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
  ->setPayableAmount(10 + 2.1)
  ->setAllowanceTotalAmount(0)
  ->setTaxInclusiveAmount(10 + 2.1)
  ->setLineExtensionAmount(10)
  ->setTaxExclusiveAmount(10);
 
- $classifiedTaxCategory = (new ClassifiedTaxCategory())
+ 
+ $classifiedTaxCategory = (new \Ishifoev\Invoice\Tax\ClassifiedTaxCategory())
  ->setId('S')
  ->setPercent(21.00)
  ->setTaxScheme($taxScheme);
-
+ var_dump($classifiedTaxCategory);
+ exit;
   // Product
   $productItem = (new Item())
   ->setName('Product Name')
