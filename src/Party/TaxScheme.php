@@ -7,20 +7,23 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 //require 'Schema.php';
 
-class TaxScheme implements XmlSerializable {
+class TaxScheme implements XmlSerializable
+{
     private $id;
     /**
      * For Seller Vat Identifier get
      * Example value: VAT
      */
-    public function getId() {
+    public function getId()
+    {
         return $this->id;
     }
     
     /**
-     *Set ID 
+     *Set ID
      */
-    public function setId(?string $id): TaxScheme {
+    public function setId(?string $id): TaxScheme
+    {
         $this->id = $id;
         return $this;
     }
@@ -28,9 +31,10 @@ class TaxScheme implements XmlSerializable {
     /**
      * Serialize XML Tax Scheme
      */
-    public function xmlSerialize(Writer $writer) {
-       $writer->write([
+    public function xmlSerialize(Writer $writer)
+    {
+        $writer->write([
           Schema::CBC . 'ID' => $this->id
-       ]);
+        ]);
     }
 }

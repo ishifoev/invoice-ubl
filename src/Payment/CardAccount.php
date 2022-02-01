@@ -1,6 +1,7 @@
 <?php
 
-class CardAccount {
+class CardAccount
+{
     private $primaryAccountNumberID;
     private $networkID;
     private $holderName;
@@ -9,30 +10,34 @@ class CardAccount {
      * Payment card primary account number
      * Example value: 1234
      */
-    public function getPrimaryAccountNumberId(): ?string {
+    public function getPrimaryAccountNumberId(): ?string
+    {
         return $this->primaryAccountNumberID;
     }
 
     /**
      * Set network ID
      */
-    public function setPrimaryAccountNumberId(?string $primaryAccountNumberID): CardAccount {
+    public function setPrimaryAccountNumberId(?string $primaryAccountNumberID): CardAccount
+    {
         $this->primaryAccountNumberID = $primaryAccountNumberID;
         return $this;
     }
 
     /**
-     * Syntax required element not related to a business term. 
-     * Example value: NA 
+     * Syntax required element not related to a business term.
+     * Example value: NA
      */
-    public function getNetworkId(): ?string {
+    public function getNetworkId(): ?string
+    {
         return $this->networkID;
     }
 
     /**
      * Set network ID
      */
-    public function setNetworkId(?string $networkID): CardAccount {
+    public function setNetworkId(?string $networkID): CardAccount
+    {
         $this->networkID = $networkID;
         return $this;
     }
@@ -40,14 +45,16 @@ class CardAccount {
     /**
      * Payment card holder name
      */
-    public function getPaymentCardHolder(): ?string {
+    public function getPaymentCardHolder(): ?string
+    {
         return $this->holderName;
     }
 
     /**
      * set payment card holder
      */
-    public function setPaymentCardHolder(?string $holderName): CardAccount {
+    public function setPaymentCardHolder(?string $holderName): CardAccount
+    {
         $this->holderName = $holderName;
         return $this;
     }

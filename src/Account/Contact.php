@@ -6,7 +6,8 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 
-class Contact implements XmlSerializable {
+class Contact implements XmlSerializable
+{
     private $name;
     private $telephone;
     private $telefax;
@@ -16,14 +17,16 @@ class Contact implements XmlSerializable {
     /**
      * Get Name
      */
-    public function getName(): ?string {
+    public function getName(): ?string
+    {
         return $this->name;
     }
 
     /**
      * Set Name
      */
-    public function setName(?string $name): Contact {
+    public function setName(?string $name): Contact
+    {
         $this->name = $name;
         return $this;
     }
@@ -31,7 +34,8 @@ class Contact implements XmlSerializable {
     /**
      * Get telephone
      */
-    public function getTelephone(): ?string {
+    public function getTelephone(): ?string
+    {
         return $this->telephone;
     }
 
@@ -56,7 +60,8 @@ class Contact implements XmlSerializable {
     /**
      * Set telephone
      */
-    public function setTelephone(?string $telephone): Contact {
+    public function setTelephone(?string $telephone): Contact
+    {
         $this->telephone = $telephone;
         return $this;
     }
@@ -64,14 +69,16 @@ class Contact implements XmlSerializable {
     /**
      * get electroic Mail
      */
-    public function getElectroicMail(): ?string {
+    public function getElectroicMail(): ?string
+    {
         return $this->electronicMail;
     }
 
     /**
      * Set electronic mail
      */
-    public function setElectronicMail(?string $electronicMail): Contact {
+    public function setElectronicMail(?string $electronicMail): Contact
+    {
         $this->electronicMail = $electronicMail;
         return $this;
     }
@@ -79,26 +86,27 @@ class Contact implements XmlSerializable {
     /**
      * Serialize Contact
      */
-    public function xmlSerialize(Writer $writer) {
-        if($this->name !== null) {
+    public function xmlSerialize(Writer $writer)
+    {
+        if ($this->name !== null) {
             $writer->write([
                 Schema::CBC . 'Name' => $this->name
             ]);
         }
 
-        if($this->telephone !== null) {
+        if ($this->telephone !== null) {
             $writer->write([
                 Schema::CBC . 'Telephone' => $this->telephone
             ]);
         }
         
-        if($this->telefax !== null) {
+        if ($this->telefax !== null) {
             $writer->write([
                 Schema::CBC . 'Telefax' . $this->telefax
             ]);
         }
 
-        if($this->electronicMail !== null) {
+        if ($this->electronicMail !== null) {
             $writer->write([
                 Schema::CBC . 'ElectronicMail' . $this->electronicMail
             ]);

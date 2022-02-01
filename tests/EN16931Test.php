@@ -194,9 +194,9 @@ $orderReference = (new  \Ishifoev\Invoice\Payment\OrderReference())
 
    $generateInvoice = new  \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
-  $dom->loadXML($outputXMLString);
+  
   $dom = new \DOMDocument;
- 
+  $dom->loadXML($outputXMLString);
   $dom->save('EN16931Test.xml');
   // Use webservice at peppol.helger.com to verify the result
   $wsdl = "http://peppol.helger.com/wsdvs?wsdl=1";

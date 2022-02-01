@@ -8,21 +8,24 @@ use Ishifoev\Invoice\Schema;
 
 //require 'Schema.php';
 
-class FinancialInstitutionBranch implements XmlSerializable {
+class FinancialInstitutionBranch implements XmlSerializable
+{
     private $id;
 
     /**
      * Payment service provider identifier
      *  Example value: 9999
      */
-    public function getId(): ?string {
-       return $this->id;
+    public function getId(): ?string
+    {
+        return $this->id;
     }
 
     /**
      * Set provider identifier
      */
-    public function setId(?string $id): FinancialInstitutionBranch {
+    public function setId(?string $id): FinancialInstitutionBranch
+    {
         $this->id = $id;
         return $this;
     }
@@ -30,9 +33,10 @@ class FinancialInstitutionBranch implements XmlSerializable {
     /**
      * Serialize XML FinancialInstitutionBranch
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
            Schema::CBC . 'ID' => $this->id
         ]);
-     }
+    }
 }

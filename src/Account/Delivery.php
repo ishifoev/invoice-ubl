@@ -9,7 +9,8 @@ use Ishifoev\Invoice\Schema;
 use DateTime as DateTime;
 use Ishifoev\Invoice\Account\PostalAddress;
 
-class Delivery implements XmlSerializable {
+class Delivery implements XmlSerializable
+{
     private $actualDeliveryDate;
     private $deliveryLocation;
     private $deliveryParty;
@@ -17,7 +18,8 @@ class Delivery implements XmlSerializable {
     /**
      * get actual delivery party
      */
-    public function getActualDeliveryDate() {
+    public function getActualDeliveryDate()
+    {
         return $this->actualDeliveryDate;
     }
 
@@ -33,14 +35,16 @@ class Delivery implements XmlSerializable {
     /**
      * get Delivery Location
      */
-    public function getDeliveryLocation(): ?PostalAddress {
+    public function getDeliveryLocation(): ?PostalAddress
+    {
         return $this->deliveryLocation;
     }
 
     /**
      * Set delivery location
      */
-    public function setDeliveryLocation(?PostalAddress $deliveryLocation): Delivery {
+    public function setDeliveryLocation(?PostalAddress $deliveryLocation): Delivery
+    {
         $this->deliveryLocation = $deliveryLocation;
         return $this;
     }
@@ -48,34 +52,37 @@ class Delivery implements XmlSerializable {
     /**
      * get Delivery Party
      */
-    public function getDeliveryParty() {
+    public function getDeliveryParty()
+    {
         return $this->deliveryParty;
     }
 
     /**
      * set delivery party
      */
-    public function setDeliveryParty($deliveryParty): Delivery {
+    public function setDeliveryParty($deliveryParty): Delivery
+    {
         $this->deliveryParty = $deliveryParty;
         return $this;
-    } 
+    }
 
     /**
      * Serialize Delivery
      */
-    public function xmlSerialize(Writer $writer) {
-        if($this->actualDeliveryDate !== null) {
+    public function xmlSerialize(Writer $writer)
+    {
+        if ($this->actualDeliveryDate !== null) {
             $writer->write([
                 Schema::CBC . 'ActualDeliveryDate' => $this->actualDeliveryDate->format('Y-m-d')
             ]);
         }
-        if($this->deliveryLocation !== null) {
+        if ($this->deliveryLocation !== null) {
             $writer->write([
                 Schema::CAC . 'DeliveryLocation' => [ Schema::CAC . 'Address' => $this->deliveryLocation ]
             ]);
         }
 
-        if($this->deliveryParty !== null) {
+        if ($this->deliveryParty !== null) {
             $writer->write([
                 Schema::CAC . 'DeliveryParty' => $this->deliveryParty
             ]);

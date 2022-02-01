@@ -2,7 +2,8 @@
 
 namespace Ishifoev\Invoice\Codes;
 
-class VatCategoryCode {
+class VatCategoryCode
+{
     const VAT_REVERSE_CHANGE = 'AE';
     const EXEMPT_FROM_TAX = 'E';
     const STANDART_RATE = 'S';

@@ -8,7 +8,8 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Financial\PayeeFinancialAccount;
 use Ishifoev\Invoice\Schema;
 
-class PaymentMeans implements XmlSerializable {
+class PaymentMeans implements XmlSerializable
+{
     private $paymentMeansCode = 1;
     private $paymentMeansCodeAttributes = [
         'listID' => 'UN/ECE 4461',
@@ -24,32 +25,36 @@ class PaymentMeans implements XmlSerializable {
      * Payment means type code
      * Example value: 30
      */
-    public function getPaymentMeansCode(): ?int {
+    public function getPaymentMeansCode(): ?int
+    {
         return $this->paymentMeansCode;
     }
 
     /**
      * Set Payment means code
      */
-    public function setPaymentMeansCode(?int $paymentMeansCode, $attributes = null): PaymentMeans {
+    public function setPaymentMeansCode(?int $paymentMeansCode, $attributes = null): PaymentMeans
+    {
         $this->paymentMeansCode = $paymentMeansCode;
-        if(isset($attributes)) {
+        if (isset($attributes)) {
             $this->paymentMeansCodeAttributes = $attributes;
         }
         return $this;
     }
     /**
-     * This information element helps the Seller to assign an incoming payment to the relevant payment process. 
+     * This information element helps the Seller to assign an incoming payment to the relevant payment process.
      * Example value: 432948234234234
      */
-    public function getPaymentId(): ?string {
+    public function getPaymentId(): ?string
+    {
         return $this->paymentId;
     }
 
     /**
      * Set payment id
      */
-    public function setPaymentId(?string $paymentId): PaymentMeans {
+    public function setPaymentId(?string $paymentId): PaymentMeans
+    {
         $this->paymentId = $paymentId;
         return $this;
     }
@@ -57,14 +62,16 @@ class PaymentMeans implements XmlSerializable {
     /**
      * PAYMENT CARD INFORMATION
      */
-    public function getCardAccountHolder(): ?CardAccount {
-       return $this->cardAccountHolder;
+    public function getCardAccountHolder(): ?CardAccount
+    {
+        return $this->cardAccountHolder;
     }
 
     /**
      * Set payment card account info
      */
-    public function setCardAccountHolder(?CardAccount $cardAccountHolder): PaymentMeans {
+    public function setCardAccountHolder(?CardAccount $cardAccountHolder): PaymentMeans
+    {
         $this->cardAccountHolder = $cardAccountHolder;
         return $this;
     }
@@ -89,21 +96,24 @@ class PaymentMeans implements XmlSerializable {
     /**
      * DIRECT DEBIT
      */
-    public function getPaymentMandate(): ?PaymentMandate {
+    public function getPaymentMandate(): ?PaymentMandate
+    {
         return $this->paymentMandate;
     }
 
     /**
      * Set direct debit
      */
-    public function setPaymentMandate(?PaymentMandate $paymentMandate): PaymentMeans {
+    public function setPaymentMandate(?PaymentMandate $paymentMandate): PaymentMeans
+    {
         $this->paymentMandate = $paymentMandate;
         return $this;
     }
     /**
      * Serialize XML Payment Means
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
             'name' => Schema::CBC . 'PaymentMeansCode',
             'value' => $this->paymentMeansCode,

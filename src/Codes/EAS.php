@@ -1,7 +1,8 @@
 <?php
 
 //Electronic Address Scheme (EAS)
-class EAS {
+class EAS
+{
     // System Information et Repertoire des Entreprise et des Etablissements: SIRENE
     const system_syrene = 0002;
    

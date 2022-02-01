@@ -6,7 +6,8 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 
-class Country implements XmlSerializable {
+class Country implements XmlSerializable
+{
     private $identificationCode;
 
     private $countryCodes = [
@@ -18,14 +19,16 @@ class Country implements XmlSerializable {
     /**
      * Get Country Code
      */
-    public function getIdentificationCode(): ?string {
+    public function getIdentificationCode(): ?string
+    {
         return $this->identificationCode;
     }
 
     /**
      * Set Country Code
      */
-    public function setIdentificationCode(?string $identificationCode): Country {
+    public function setIdentificationCode(?string $identificationCode): Country
+    {
         $this->identificationCode = $identificationCode;
         return $this;
     }
@@ -33,7 +36,8 @@ class Country implements XmlSerializable {
     /**
      * XML Serialize for Country
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
             Schema::CBC . 'IdentificationCode' => $this->identificationCode
         ]);

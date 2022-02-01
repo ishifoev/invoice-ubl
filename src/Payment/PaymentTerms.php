@@ -6,20 +6,23 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 
-class PaymentTerms implements XmlSerializable {
+class PaymentTerms implements XmlSerializable
+{
     private $note;
 
     /**
      *  Payment terms
      */
-    public function getNote(): ?string {
+    public function getNote(): ?string
+    {
         return $this->note;
     }
 
     /**
      * set note
      */
-    public function setNote(?string $note): PaymentTerms {
+    public function setNote(?string $note): PaymentTerms
+    {
         $this->note = $note;
         return $this;
     }

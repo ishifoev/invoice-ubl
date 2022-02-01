@@ -10,7 +10,8 @@ use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
 
-class TaxSubTotal implements XmlSerializable {
+class TaxSubTotal implements XmlSerializable
+{
     private $taxableAmount;
     private $taxAmount;
     private $taxCategory;
@@ -20,14 +21,16 @@ class TaxSubTotal implements XmlSerializable {
      * VAT category taxable amount
      * Example value: 1945.00
      */
-    public function getTaxAbleAmount(): ?float {
+    public function getTaxAbleAmount(): ?float
+    {
         return $this->taxableAmount;
     }
 
     /**
      * Set taxable amout
      */
-    public function setTaxAbleAmount(?float $taxableAmount): TaxSubTotal {
+    public function setTaxAbleAmount(?float $taxableAmount): TaxSubTotal
+    {
         $this->taxableAmount = $taxableAmount;
         return $this;
     }
@@ -36,14 +39,16 @@ class TaxSubTotal implements XmlSerializable {
      * VAT category tax amount
      * Example value: 486.25
      */
-    public function getTaxAmount(): ?float {
+    public function getTaxAmount(): ?float
+    {
         return $this->taxAmount;
     }
 
     /**
      * Set tax amount
      */
-    public function setTaxAmount(?float $taxAmount): TaxSubTotal {
+    public function setTaxAmount(?float $taxAmount): TaxSubTotal
+    {
         $this->taxAmount = $taxAmount;
         return $this;
     }
@@ -51,14 +56,16 @@ class TaxSubTotal implements XmlSerializable {
     /**
      *  VAT CATEGORY
      */
-    public function getTaxCategory(): ?TaxCategory {
+    public function getTaxCategory(): ?TaxCategory
+    {
         return $this->taxCategory;
     }
 
     /**
      * Set vat category
      */
-    public function setTaxCategory(?TaxCategory $taxCategory): TaxSubTotal {
+    public function setTaxCategory(?TaxCategory $taxCategory): TaxSubTotal
+    {
         $this->taxCategory = $taxCategory;
         return $this;
     }
@@ -66,14 +73,16 @@ class TaxSubTotal implements XmlSerializable {
     /**
      *  Document level allowance or charge VAT rate
      */
-    public function getPercent(): ?float {
+    public function getPercent(): ?float
+    {
         return $this->percent;
     }
 
     /**
      * Set Percent
      */
-    public function setPercent(?float $percent): TaxSubTotal {
+    public function setPercent(?float $percent): TaxSubTotal
+    {
         $this->percent = $percent;
         return $this;
     }
@@ -81,14 +90,15 @@ class TaxSubTotal implements XmlSerializable {
     /**
      * Validation tax amount, taxable amount and taxcategory
      */
-    public function validate() {
-        if($this->taxableAmount === null) {
-           throw new InvalidArgumentException('Missing taxable amount');
+    public function validate()
+    {
+        if ($this->taxableAmount === null) {
+            throw new InvalidArgumentException('Missing taxable amount');
         }
-        if($this->taxAmount === null) {
+        if ($this->taxAmount === null) {
             throw new InvalidArgumentException('Missing tax amount');
         }
-        if($this->taxCategory === null) {
+        if ($this->taxCategory === null) {
             throw new InvalidArgumentException('Missing tax category');
         }
     }
@@ -96,7 +106,8 @@ class TaxSubTotal implements XmlSerializable {
     /**
      * Serialize TaxSubtotal
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $this->validate();
 
         $writer->write([
@@ -116,7 +127,7 @@ class TaxSubTotal implements XmlSerializable {
             ]
         ]);
 
-        if($this->percent !== null) {
+        if ($this->percent !== null) {
             $writer->write([
                 Schema::CBC . 'Percent' => $this->percent
             ]);

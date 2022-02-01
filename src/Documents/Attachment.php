@@ -8,14 +8,16 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 
-class Attachment implements XmlSerializable {
+class Attachment implements XmlSerializable
+{
     private $filePath;
     private $externalReference;
 
     /**
      * Determine mime type
      */
-    public function getFileMimeType(): string {
+    public function getFileMimeType(): string
+    {
         if (($mime_type = mime_content_type($this->filePath)) !== false) {
             return $mime_type;
         }
@@ -26,14 +28,16 @@ class Attachment implements XmlSerializable {
     /**
      * get file path
      */
-    public function getFilePath(): ?string {
+    public function getFilePath(): ?string
+    {
         return $this->filePath;
     }
 
     /**
      * Set File Path
      */
-    public function setFilePath(?string $filePath): Attachment {
+    public function setFilePath(?string $filePath): Attachment
+    {
         $this->filepath = $filePath;
     }
 
@@ -41,14 +45,16 @@ class Attachment implements XmlSerializable {
      * get external reference
      * External document location
      */
-    public function getExternalReference(): ?string {
+    public function getExternalReference(): ?string
+    {
         return $this->externalReference;
     }
 
     /**
      * Set external document location
      */
-    public function setExternalReference(?string $externalReference): Attachment {
+    public function setExternalReference(?string $externalReference): Attachment
+    {
         $this->externalReference = $externalReference;
         return $this;
     }
@@ -57,7 +63,8 @@ class Attachment implements XmlSerializable {
      * the validate function when xml will be serialize
      * missing file path and attachment does not exist
      */
-    public function validate() {
+    public function validate()
+    {
         if ($this->filePath === null && $this->externalReference) {
             throw new InvalidArgumentException('Missing filePath and document location');
         }
@@ -72,7 +79,7 @@ class Attachment implements XmlSerializable {
      */
     public function xmlSerialize(Writer $writer)
     {
-        if($this->filePath) {
+        if ($this->filePath) {
             $fileContents = base64_encode(file_get_contents($this->filePath));
             $mime_type = $this->getFileMimeType();
 

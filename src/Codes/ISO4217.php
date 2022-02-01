@@ -1,7 +1,7 @@
 <?php
 
 /**
- * The currency used for VAT accounting 
+ * The currency used for VAT accounting
  * and reporting purposes as accepted or required in the country of the Seller.
  */
 const AED = 'AED';

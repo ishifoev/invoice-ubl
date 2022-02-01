@@ -2,7 +2,8 @@
 
 namespace Ishifoev\Invoice\Invoice;
 
-class InvoiceTypeCode {
+class InvoiceTypeCode
+{
     const INVOICE = 380;
     const DEBIT_NOTE_SERVICES = 80;
     const METERED_SERVICE_INVOICE = 82;

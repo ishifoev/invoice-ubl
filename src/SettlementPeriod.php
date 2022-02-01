@@ -90,4 +90,3 @@ class SettlementPeriod implements XmlSerializable
         ]);
     }
 }
-

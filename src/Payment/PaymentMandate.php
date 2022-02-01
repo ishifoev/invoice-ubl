@@ -1,6 +1,7 @@
 <?php
 
-class PaymentMandate {
+class PaymentMandate
+{
     private $id;
     private $payerFinancialAccount;
 
@@ -8,14 +9,16 @@ class PaymentMandate {
      * Mandate reference identifier
      * example value 1234
      */
-    public function getId(): ?int {
+    public function getId(): ?int
+    {
         return $this->id;
     }
 
     /**
      * Set ID
      */
-    public function setId(?int $id): PaymentMandate {
+    public function setId(?int $id): PaymentMandate
+    {
         $this->id = $id;
         return $this;
     }
@@ -23,15 +26,17 @@ class PaymentMandate {
     /**
      * PAYER FINANCIAL ACCOUNT
      */
-    public function getPayerFinancialAccount(): ?PayerFinancialAccount {
+    public function getPayerFinancialAccount(): ?PayerFinancialAccount
+    {
         return $this->payerFinancialAccount;
     }
 
     /**
      * Set payer financial account
      */
-    public function setPayerFinancialAccount(?PayerFinancialAccount $payerFinancialAccount): PaymentMandate {
+    public function setPayerFinancialAccount(?PayerFinancialAccount $payerFinancialAccount): PaymentMandate
+    {
         $this->payerFinancialAccount = $payerFinancialAccount;
         return $this;
-    } 
+    }
 }

@@ -6,7 +6,8 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 
-class AdditionalDocumentReference implements XmlSerializable {
+class AdditionalDocumentReference implements XmlSerializable
+{
     private $id;
     private $documentTypeCode;
     private $documentDescription;
@@ -15,28 +16,32 @@ class AdditionalDocumentReference implements XmlSerializable {
     /**
      * Get document Id
      */
-    public function getId(): ?string {
+    public function getId(): ?string
+    {
         return $this->getId;
     }
 
     /**
      * Set document Id
      */
-    public function setId(?string $id): AdditionalDocumentReference {
+    public function setId(?string $id): AdditionalDocumentReference
+    {
         return $this->id;
     }
 
     /**
      * Get Document Type code
      */
-    public function getDocumentTypeCode(): ?string {
+    public function getDocumentTypeCode(): ?string
+    {
         return $this->documentTypeCode;
     }
 
     /**
      * Set Document Type Code
      */
-    public function setDocumentTypeCode(?string $documentTypeCode): AdditionalDocumentReference {
+    public function setDocumentTypeCode(?string $documentTypeCode): AdditionalDocumentReference
+    {
         $this->documentTypeCode = $documentTypeCode;
         return $this;
     }
@@ -44,14 +49,16 @@ class AdditionalDocumentReference implements XmlSerializable {
     /**
      * Get document description
      */
-    public function getDocumentDescription(): ?string {
+    public function getDocumentDescription(): ?string
+    {
         return $this->documentDescription;
     }
 
     /**
      * Set document Description
      */
-    public function setDocumentDescription(?string $documentDescription): AdditionalDocumentReference {
+    public function setDocumentDescription(?string $documentDescription): AdditionalDocumentReference
+    {
         $this->documentDescription = $documentDescription;
         return $this;
     }
@@ -59,30 +66,32 @@ class AdditionalDocumentReference implements XmlSerializable {
     /**
      * Get attachment
      */
-    public function getAttachMent(): ?Attachment {
+    public function getAttachMent(): ?Attachment
+    {
         return $this->attachment;
     }
 
     /**
      * Set attachment
      */
-    public function setAttachMent(Attachment $attachment): AdditionalDocumentReference {
+    public function setAttachMent(Attachment $attachment): AdditionalDocumentReference
+    {
         $this->attachment = $attachment;
     }
 
     /**
-     * Serialize Document Referece 
+     * Serialize Document Referece
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([ Schema::CBC . 'ID' => $this->id ]);
-        if($this->documentTypeCode !== null) {
+        if ($this->documentTypeCode !== null) {
             $writer->write([ Schema::CBC . 'DocumentTypeCode' => $this->documentTypeCode ]);
         }
 
-        if($this->documentDescription !== null) {
+        if ($this->documentDescription !== null) {
             $writer->write([ Schema::CBC . 'DocumentDescription' => $this->documentDescription ]);
         }
         $writer->write([ Schema::CAC . 'Attachment' => $this->attachment ]);
     }
-
 }

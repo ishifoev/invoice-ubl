@@ -7,7 +7,8 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\ClassifiedTaxCategory;
 use Ishifoev\Invoice\Schema;
 
-class Item implements XmlSerializable {
+class Item implements XmlSerializable
+{
     private $name;
     private $description;
     private $buyersItemIdentification;
@@ -17,14 +18,16 @@ class Item implements XmlSerializable {
     /**
      *  Item name
      */
-    public function getItem(): ?string {
+    public function getItem(): ?string
+    {
         return $this->name;
     }
 
     /**
      * Set item name
      */
-    public function setName(?string $name): Item {
+    public function setName(?string $name): Item
+    {
         $this->name = $name;
         return $this;
     }
@@ -32,14 +35,16 @@ class Item implements XmlSerializable {
     /**
      *  Item description
      */
-    public function getDescription(): ?string {
+    public function getDescription(): ?string
+    {
         return $this->description;
     }
     
     /**
      * Set description
      */
-    public function setDescription(?string $description): Item {
+    public function setDescription(?string $description): Item
+    {
         $this->description = $description;
         return $this;
     }
@@ -47,14 +52,16 @@ class Item implements XmlSerializable {
     /**
      * get byer item identification
      */
-    public function getBuyersItemIdentification(): ?string {
+    public function getBuyersItemIdentification(): ?string
+    {
         return $this->buyersItemIdentification;
     }
 
      /**
      * set byer item identification
      */
-    public function setBuyersItemIdentification(?string $buyersItemIdentification): Item {
+    public function setBuyersItemIdentification(?string $buyersItemIdentification): Item
+    {
         $this->buyersItemIdentification = $this->buyersItemIdentification;
         return $this;
     }
@@ -62,29 +69,33 @@ class Item implements XmlSerializable {
      /**
      * get sellers item identification
      */
-    public function getSellersItemIdentification(): ?string {
+    public function getSellersItemIdentification(): ?string
+    {
         return $this->sellersItemIdentification;
     }
 
      /**
      * set sellers item identification
      */
-    public function setSellersItemIdentification(?string $sellersItemIdentification): Item {
+    public function setSellersItemIdentification(?string $sellersItemIdentification): Item
+    {
         $this->sellersItemIdentification = $sellersItemIdentification;
         return $this;
     }
 
     /**
-     * Classified Tax Category get 
+     * Classified Tax Category get
      */
-    public function getClassifiedTaxCategory(): ?ClassifiedTaxCategory {
+    public function getClassifiedTaxCategory(): ?ClassifiedTaxCategory
+    {
         return $this->classifiedTaxCategory;
     }
 
     /**
      * Set classified tax category
      */
-    public function setClassifiedTaxCategory(?ClassifiedTaxCategory $classifiedTaxCategory): Item {
+    public function setClassifiedTaxCategory(?ClassifiedTaxCategory $classifiedTaxCategory): Item
+    {
         $this->classifiedTaxCategory = $classifiedTaxCategory;
         return $this;
     }
@@ -92,31 +103,32 @@ class Item implements XmlSerializable {
     /**
      * Item Serialization
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
             Schema::CBC . 'Description' => $this->description,
             Schema::CBC . 'Name' => $this->name
         ]);
 
-        if(!empty($this->getBuyersItemIdentification)) {
+        if (!empty($this->getBuyersItemIdentification)) {
             $writer->write([
                 Schema::CAC . 'BuyersItemIdentification' => [
                     Schema::CBC . 'ID' => $this->buyersItemIdentification
                 ]
-           ]);
+            ]);
         }
 
-        if(!empty($this->getSellersItemIdentification())) {
+        if (!empty($this->getSellersItemIdentification())) {
             $writer->write([
                 Schema::CAC . 'SellersItemIdentification' => [
                     Schema::CBC . 'ID' => $this->sellersItemIdentification
                 ]
-           ]);
+            ]);
         }
-        if(!empty($this->getClassifiedTaxCategory())) {
+        if (!empty($this->getClassifiedTaxCategory())) {
             $writer->write([
                 Schema::CAC . 'ClassifiedTaxCategory' => $this->getClassifiedTaxCategory()
-           ]);
+            ]);
         }
     }
 }

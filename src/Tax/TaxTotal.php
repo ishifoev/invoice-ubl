@@ -10,21 +10,24 @@ use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
 
-class TaxTotal implements XmlSerializable {
+class TaxTotal implements XmlSerializable
+{
     private $taxAmount;
     private $taxSubTotals = [];
 
     /**
      * Invoice total VAT amount, Invoice total VAT amount in accounting currency
      */
-    public function getTaxAmount(): ?float {
+    public function getTaxAmount(): ?float
+    {
         return $this->taxAmount;
     }
 
     /**
      * Set tax amount
      */
-    public function setTaxAmount(?float $taxAmount): TaxTotal {
+    public function setTaxAmount(?float $taxAmount): TaxTotal
+    {
         $this->taxAmount = $taxAmount;
         return $this;
     }
@@ -32,14 +35,16 @@ class TaxTotal implements XmlSerializable {
     /**
      *  VAT BREAKDOWN
      */
-    public function getTaxSubtotal(): array  {
+    public function getTaxSubtotal(): array
+    {
         return $this->taxSubTotals;
     }
 
     /**
      * Set tax subtotal
      */
-    public function setTaxSubtotal(TaxSubTotal $taxSubTotals): TaxTotal {
+    public function setTaxSubtotal(TaxSubTotal $taxSubTotals): TaxTotal
+    {
         $this->taxSubTotals[] = $taxSubTotals;
         return $this;
     }
@@ -47,8 +52,9 @@ class TaxTotal implements XmlSerializable {
     /**
      * validation for tax amount
      */
-    public function validate() {
-        if($this->taxAmount === null) {
+    public function validate()
+    {
+        if ($this->taxAmount === null) {
             throw new InvalidArgumentException('Missing taxtotal tax amount');
         }
     }
@@ -56,16 +62,17 @@ class TaxTotal implements XmlSerializable {
     /**
      * Serialize TaxtTotal
      */
-    public function xmlSerialize(Writer $writer): void {
+    public function xmlSerialize(Writer $writer): void
+    {
         $writer->write([
             'name' => Schema::CBC . 'TaxAmount',
-            'value' => number_format($this->taxAmount, 2, '.',''),
+            'value' => number_format($this->taxAmount, 2, '.', ''),
             'attributes' => [
                 'currencyID' => GenerateInvoice::$currencyID
             ]
         ]);
 
-        foreach($this->taxSubTotals as $taxSubTotal) {
+        foreach ($this->taxSubTotals as $taxSubTotal) {
             $writer->write([ Schema::CAC . 'TaxSubtotal' => $taxSubTotal]);
         }
     }

@@ -10,7 +10,8 @@ use Ishifoev\Invoice\Schema;
 
 use InvalidArgumentException as InvalidArgumentException;
 
-class ClassifiedTaxCategory implements XmlSerializable {
+class ClassifiedTaxCategory implements XmlSerializable
+{
     private $id;
     private $percent;
     private $taxScheme;
@@ -20,7 +21,8 @@ class ClassifiedTaxCategory implements XmlSerializable {
     /**
      * Invoiced item VAT category code
      */
-    public function getId(): ?string {
+    public function getId(): ?string
+    {
         if (!empty($this->id)) {
             return $this->id;
         }
@@ -41,7 +43,8 @@ class ClassifiedTaxCategory implements XmlSerializable {
     /**
      * Set ID
      */
-    public function setId(?string $id): ClassifiedTaxCategory {
+    public function setId(?string $id): ClassifiedTaxCategory
+    {
         $this->id = $id;
         return $this;
     }
@@ -49,14 +52,16 @@ class ClassifiedTaxCategory implements XmlSerializable {
     /**
      * Invoiced item VAT rate
      */
-    public function getPercent(): ?float {
+    public function getPercent(): ?float
+    {
         return $this->percent;
     }
 
     /**
      * Set percent
      */
-    public function setPercent(?float $percent): ClassifiedTaxCategory {
+    public function setPercent(?float $percent): ClassifiedTaxCategory
+    {
         $this->percent = $percent;
         return $this;
     }
@@ -64,14 +69,16 @@ class ClassifiedTaxCategory implements XmlSerializable {
     /**
      * get taxt scheme
      */
-    public function getTaxScheme(): ?TaxScheme {
+    public function getTaxScheme(): ?TaxScheme
+    {
         return $this->taxScheme;
     }
 
     /**
      * Set TAX SCHEME
      */
-    public function setTaxScheme(?TaxScheme $taxScheme): ClassifiedTaxCategory {
+    public function setTaxScheme(?TaxScheme $taxScheme): ClassifiedTaxCategory
+    {
         $this->taxScheme = $taxScheme;
         return $this;
     }
@@ -93,14 +100,15 @@ class ClassifiedTaxCategory implements XmlSerializable {
     /**
      * Serialize Classified Tax Category
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $this->validate();
 
         $schemeAttributes = [];
-        if($this->schemeID !== null) {
+        if ($this->schemeID !== null) {
             $schemeAttributes['schemeID'] = $this->schemeID;
         }
-        if($this->schemeName !== null) {
+        if ($this->schemeName !== null) {
             $schemeAttributes['schemeName'] = $this->schemeName;
         }
 

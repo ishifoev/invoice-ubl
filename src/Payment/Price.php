@@ -7,39 +7,44 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
-class Price implements XmlSerializable {
+class Price implements XmlSerializable
+{
     private $priceAmount;
     private $baseQuantity;
     private $unitCode = UnitCode::UNIT;
 
     /**
-     * The price of an item, exclusive of VAT, after subtracting item price discount. 
+     * The price of an item, exclusive of VAT, after subtracting item price discount.
      *  Example value: 23.45
      */
-    public function getPriceAmount(): ?float {
+    public function getPriceAmount(): ?float
+    {
         return $this->priceAmount;
     }
 
     /**
      * Set price amount
      */
-    public function setPriceAmount(?float $priceAmount): Price {
-       $this->priceAmount = $priceAmount;
-       return $this;
+    public function setPriceAmount(?float $priceAmount): Price
+    {
+        $this->priceAmount = $priceAmount;
+        return $this;
     }
     
     /**
      * The number of item units to which the price applies.
      * Example value: 1
      */
-    public function getBaseQuantity(): ?float {
+    public function getBaseQuantity(): ?float
+    {
         return $this->baseQuantity;
     }
 
     /**
      * Set base quantity
      */
-    public function setBaseQuantity(?float $baseQuantity): Price {
+    public function setBaseQuantity(?float $baseQuantity): Price
+    {
         $this->baseQuantity = $baseQuantity;
         return $this;
     }
@@ -47,14 +52,16 @@ class Price implements XmlSerializable {
     /**
      * get unit code
      */
-    public function getUnitCode(): ?string {
+    public function getUnitCode(): ?string
+    {
         return $this->unitCode;
     }
 
     /**
      * set unit code
      */
-    public function setUnitCode(?string $unitCode): Price {
+    public function setUnitCode(?string $unitCode): Price
+    {
         $this->unitCode = $unitCode;
         return $this;
     }
@@ -62,7 +69,8 @@ class Price implements XmlSerializable {
     /**
      * Serialize Price
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
             [
                 'name' => Schema::CBC . 'PriceAmount',

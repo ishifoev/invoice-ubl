@@ -169,7 +169,7 @@ class Party implements XmlSerializable
      */
     public function xmlSerialize(Writer $writer)
     {
-        if($this->endpointID !== null && $this->endpointID_schemeID !== null) {
+        if ($this->endpointID !== null && $this->endpointID_schemeID !== null) {
             $writer->write([
                 'name' => Schema::CBC . 'EndpointID',
                     'value' => $this->endpointID,

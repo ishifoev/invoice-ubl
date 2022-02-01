@@ -7,7 +7,8 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\TaxCategory;
 use Ishifoev\Invoice\Schema;
 
-class AllowanceCharge implements XmlSerializable {
+class AllowanceCharge implements XmlSerializable
+{
     private $chargeIndicator;
     private $allowanceChargeReasonCode;
     private $allowanceChargeReason;
@@ -18,16 +19,18 @@ class AllowanceCharge implements XmlSerializable {
 
 
     /**
-     * Use “true” when informing about Charges and “false” when informing about Allowances. 
+     * Use “true” when informing about Charges and “false” when informing about Allowances.
      */
-    public function isChargeIndicator(): ?bool {
+    public function isChargeIndicator(): ?bool
+    {
         return $this->$chargeIndicator;
     }
 
     /**
      * set charge indicator
      */
-    public function setChargeIndicator(bool $chargeIndicator): AllowanceCharge {
+    public function setChargeIndicator(bool $chargeIndicator): AllowanceCharge
+    {
         $this->chargeIndicator = $chargeIndicator;
         return $this;
     }
@@ -35,14 +38,16 @@ class AllowanceCharge implements XmlSerializable {
     /**
      * Document level allowance or charge reason code
      */
-    public function getAllowanceChargeReasonCode(): ?int {
+    public function getAllowanceChargeReasonCode(): ?int
+    {
         return $this->allowanceChargeReasonCode;
     }
 
     /**
      * set document level reason code
      */
-    public function setAllowanceReasonCode(int $allowanceChargeReasonCode): AllowanceCharge {
+    public function setAllowanceReasonCode(int $allowanceChargeReasonCode): AllowanceCharge
+    {
         $this->allowanceChargeReasonCode = $allowanceChargeReasonCode;
         return $this;
     }
@@ -50,14 +55,16 @@ class AllowanceCharge implements XmlSerializable {
     /**
      *  Document level allowance or charge reason
      */
-    public function getAllowanceChargeReason(): ?string {
+    public function getAllowanceChargeReason(): ?string
+    {
         return $this->allowanceChargeReason;
     }
 
     /**
      * set document level reason code
      */
-    public function setAllowanceReason(string $allowanceChargeReason): AllowanceCharge {
+    public function setAllowanceReason(string $allowanceChargeReason): AllowanceCharge
+    {
         $this->allowanceChargeReason = $allowanceChargeReason;
         return $this;
     }
@@ -83,14 +90,16 @@ class AllowanceCharge implements XmlSerializable {
     /**
      * get base amount
      */
-    public function getBaseAmount(): ?float {
+    public function getBaseAmount(): ?float
+    {
         return $this->baseAmount;
     }
 
     /**
      * set base amount
      */
-    public function setBaseAmount(float $baseAmount): AllowanceCharge {
+    public function setBaseAmount(float $baseAmount): AllowanceCharge
+    {
         $this->baseAmount = $baseAmount;
         return $this;
     }
@@ -98,14 +107,16 @@ class AllowanceCharge implements XmlSerializable {
      /**
      * get amount
      */
-    public function getAmount(): ?float {
+    public function getAmount(): ?float
+    {
         return $this->amount;
     }
 
     /**
      * set base amount
      */
-    public function setAmount(float $amount): AllowanceCharge {
+    public function setAmount(float $amount): AllowanceCharge
+    {
         $this->amount = $amount;
         return $this;
     }
@@ -130,7 +141,8 @@ class AllowanceCharge implements XmlSerializable {
     /**
      * Serialize Allowance Charge
      */
-    public function xmlSerialize(Writer $writer) {
+    public function xmlSerialize(Writer $writer)
+    {
         $writer->write([
            Schema::CBC . 'ChargeIndicator' => $this->chargeIndicator
         ]);
@@ -147,7 +159,7 @@ class AllowanceCharge implements XmlSerializable {
             ]);
         }
 
-        if($this->multiplierFactorNumeric !== null) {
+        if ($this->multiplierFactorNumeric !== null) {
             $writer->write([
                 Schema::CBC . 'MultiplierFactorNumeric' => $this->multiplierFactorNumeric
             ]);
@@ -161,13 +173,13 @@ class AllowanceCharge implements XmlSerializable {
             ]
         ]);
 
-        if($this->taxCategory !== null) {
+        if ($this->taxCategory !== null) {
             $writer->write([
                 Schema::CAC . 'TaxCategory' => $this->taxCategory
             ]);
         }
 
-        if($this->baseAmount !== null) {
+        if ($this->baseAmount !== null) {
             $writer->write([
                 'name' => Schema::CBC . 'BaseAmount',
                 'value' => $this->baseAmount,
