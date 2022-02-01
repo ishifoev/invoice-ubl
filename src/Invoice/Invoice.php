@@ -4,6 +4,15 @@ namespace Ishifoev\Invoice\Invoice;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Account\Delivery;
+use Ishifoev\Invoice\Party\Party;
+use Ishifoev\Invoice\Invoice\InvoiceLine;
+use Ishifoev\Invoice\Legal\LegalMonetaryTotal;
+use Ishifoev\Invoice\Payment\PaymentTerms;
+use Ishifoev\Invoice\Invoice\InvoicePeriod;
+use Ishifoev\Invoice\Payment\PaymentMeans;
+use Ishifoev\Invoice\Payment\OrderReference;
+use Ishifoev\Invoice\Tax\TaxTotal;
 
 use DateTime as DateTime;
 use InvalidArgumentException as InvalidArgumentException;

@@ -134,8 +134,7 @@ $taxCategory = (new \Ishifoev\Invoice\Tax\TaxCategory())
             ->setId('S', [])
             ->setPercent(21.00)
             ->setTaxScheme($taxScheme);
-            var_dump($taxCategory);
-            exit;
+            
 $allowanceCharge = (new \Ishifoev\Invoice\AllowanceCharge())
 ->setChargeIndicator(true)
 ->setAllowanceReason('Insurance')
@@ -147,14 +146,15 @@ $allowanceCharge = (new \Ishifoev\Invoice\AllowanceCharge())
             ->setTaxAmount(2.1)
             ->setTaxCategory($taxCategory);
 
-
 $taxTotal = (new \Ishifoev\Invoice\Tax\TaxTotal())
             ->setTaxSubtotal($taxSubTotal)
             ->setTaxAmount(2.1);
+
+         
    // Payment Terms
 $paymentTerms = (new \Ishifoev\Invoice\Payment\PaymentTerms())
    ->setNote('30 days net');
-
+  
 // Delivery
 $deliveryLocation = (new \Ishifoev\Invoice\Account\PostalAddress())
 ->setStreetName('Delivery street 2')
@@ -163,15 +163,16 @@ $deliveryLocation = (new \Ishifoev\Invoice\Account\PostalAddress())
 ->setPostalZone('3521')
 ->setCountry($country);
 
+
 $delivery = (new \Ishifoev\Invoice\Account\Delivery())
   ->setActualDeliveryDate(new \DateTime())
   ->setDeliveryLocation($deliveryLocation);
-
+  
 
 $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   ->setId('5009567')
   ->setSalesOrderId('tRST-tKhM');
-
+  
    // Invoice object
    $invoice = (new  \Ishifoev\Invoice\Invoice\Invoice())
    ->setProfileID('urn:fdc:peppol.eu:2017')
@@ -192,6 +193,9 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
    ->setByerReference('BUYER_REF')
    ->setOrderReference($orderReference)
    ->setTaxTotal($taxTotal);
+   var_dump($invoice);
+  exit;
+
 
   $generateInvoice = new GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
