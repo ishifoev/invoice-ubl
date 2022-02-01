@@ -2,6 +2,8 @@
 
 namespace Ishifoev\Invoice\Financial;
 
+use Ishifoev\Invoice\Schema;
+
 class PayerFinancialAccount {
     private $id;
 

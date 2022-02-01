@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Documents;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class AdditionalDocumentReference implements XmlSerializable {
     private $id;

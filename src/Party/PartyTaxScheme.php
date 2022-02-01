@@ -6,6 +6,7 @@ use InvalidArgumentException as InvalidArgumentException;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class PartyTaxScheme implements XmlSerializable {
     private $companyId;

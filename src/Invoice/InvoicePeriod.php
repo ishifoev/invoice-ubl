@@ -6,6 +6,7 @@ use InvalidArgumentException as InvalidArgumentException;
 use DateTime as DateTime;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class InvoicePeriod implements XmlSerializable {
     private $startDate;

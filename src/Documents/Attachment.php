@@ -6,6 +6,7 @@ use Exception;
 use InvalidArgumentException;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class Attachment implements XmlSerializable {
     private $filePath;

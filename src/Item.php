@@ -5,6 +5,7 @@ namespace Ishifoev\Invoice;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\ClassifiedTaxCategory;
+use Ishifoev\Invoice\Schema;
 
 class Item implements XmlSerializable {
     private $name;

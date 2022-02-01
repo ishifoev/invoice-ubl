@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Account;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 use DateTime as DateTime;
 use Ishifoev\Invoice\Account\PostalAddress;

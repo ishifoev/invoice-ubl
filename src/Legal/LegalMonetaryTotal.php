@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Legal;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class LegalMonetaryTotal implements XmlSerializable
 {

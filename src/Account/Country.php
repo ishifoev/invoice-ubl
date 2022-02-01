@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Account;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class Country implements XmlSerializable {
     private $identificationCode;

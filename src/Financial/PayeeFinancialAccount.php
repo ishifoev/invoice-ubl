@@ -4,6 +4,7 @@ namespace Ishifoev\Invoice\Financial;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Schema;
 
 class PayeeFinancialAccount implements XmlSerializable
 {

@@ -6,6 +6,7 @@ namespace Ishifoev\Invoice\Payment;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Financial\PayeeFinancialAccount;
+use Ishifoev\Invoice\Schema;
 
 class PaymentMeans implements XmlSerializable {
     private $paymentMeansCode = 1;
