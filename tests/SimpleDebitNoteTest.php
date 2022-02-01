@@ -93,7 +93,7 @@ class SimpleDebitNoteTest extends TestCase {
            ->setInvoiceLines($invoiceLines)
            ->setLegalMonetaryTotal($legalMonetaryTotal)
            ->setTaxTotal($taxTotal)
-           ->setInvoiceTypeCode(InvoiceTypeCode::DEBIT_NOTE);
+           ->setInvoiceTypeCode(\Ishifoev\Invoice\Invoice\InvoiceTypeCode::DEBIT_NOTE);
 
            $generateInvoice = new  \Ishifoev\Invoice\Invoice\GenerateInvoice();
            $outputXMLString = $generateInvoice->invoice($invoice);

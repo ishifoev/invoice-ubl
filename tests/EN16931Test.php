@@ -194,12 +194,10 @@ $orderReference = (new  \Ishifoev\Invoice\Payment\OrderReference())
 
    $generateInvoice = new  \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
-  $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
-  $sign = new Signature;
-  $sign->GenerateKeyPair(OPENSSL_KEYTYPE_RSA);
-  $signed_dom = $sign->createSignedXml($dom);
-  $signed_dom->save('EN16931Test.xml');
+  $dom = new \DOMDocument;
+ 
+  $dom->save('EN16931Test.xml');
   // Use webservice at peppol.helger.com to verify the result
   $wsdl = "http://peppol.helger.com/wsdvs?wsdl=1";
   $client = new \SoapClient($wsdl);
