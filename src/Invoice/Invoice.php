@@ -13,6 +13,7 @@ use Ishifoev\Invoice\Invoice\InvoicePeriod;
 use Ishifoev\Invoice\Payment\PaymentMeans;
 use Ishifoev\Invoice\Payment\OrderReference;
 use Ishifoev\Invoice\Tax\TaxTotal;
+use Ishifoev\Invoice\Schema;
 
 use DateTime as DateTime;
 use InvalidArgumentException as InvalidArgumentException;
