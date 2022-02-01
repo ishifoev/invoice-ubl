@@ -58,20 +58,23 @@ $supplierCompany = (new \Ishifoev\Invoice\Party\Party())
  ->setLegalEntity($supplierLegalEntity)
  ->setPartyTaxScheme($supplierPartyTaxScheme)
  ->setPostalAddress($address);
- var_dump($supplierCompany);
- exit;
+
 
 
 // Client company node
-$clientLegalEntity = (new LegalEntity())
+$clientLegalEntity = (new \Ishifoev\Invoice\Legal\LegalEntity())
  ->setRegistrationNumber('Client Company Name')
  ->setCompanyId('Client Company Registration');
 
-$clientPartyTaxScheme = (new PartyTaxScheme())
+
+
+$clientPartyTaxScheme = (new \Ishifoev\Invoice\Party\PartyTaxScheme())
  ->setTaxScheme($taxScheme)
  ->setCompanyId('BE123456789');
 
-$clientCompany = (new Party())
+
+
+$clientCompany = (new \Ishifoev\Invoice\Party\Party())
 ->setPartyIdentificationId('9988217')
 ->setEndPointId('7300010000002', '0002')
  ->setName('Client Company Name')
@@ -79,7 +82,9 @@ $clientCompany = (new Party())
  ->setPartyTaxScheme($clientPartyTaxScheme)
  ->setPostalAddress($address)
  ->setContact($clientContact);
-
+ var_dump($clientCompany);
+ exit;
+ 
 $legalMonetaryTotal = (new LegalMonetaryTotal())
  ->setPayableAmount(10 + 2.1)
  ->setAllowanceTotalAmount(0)

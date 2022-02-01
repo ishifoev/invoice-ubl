@@ -6,6 +6,8 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Legal\LegalEntity;
 use \Ishifoev\Invoice\Account\PostalAddress;
+use Ishifoev\Invoice\Account\Contact;
+use Ishifoev\Invoice\Party\PartyTaxScheme;
 
 class Party implements XmlSerializable
 {
