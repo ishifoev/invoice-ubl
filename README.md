@@ -18,6 +18,11 @@ composer require ishifoev/invoice-ubl
 composer install
 ````
 
+### Check pass all test case for Invoices standard
+````
+vendor/bin/phpunit
+````
+
 ### Usage for show classes in Invoice that you will generate
 
 ```php
