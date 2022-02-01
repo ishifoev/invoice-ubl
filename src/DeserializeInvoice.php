@@ -1,6 +1,9 @@
 <?php
 
+namespace Ishifoev\Invoice;
+
 use Sabre\Xml\Service;
+
 class DeserializeInvoice {
   //Use Deserialization
   public function deserializeXML($outputXMLString) {

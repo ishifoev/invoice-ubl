@@ -1,8 +1,10 @@
 <?php
 
+namespace Ishifoev\Invoice;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Ishifoev\Invoice\Tax\ClassifiedTaxCategory;
 
 class Item implements XmlSerializable {
     private $name;

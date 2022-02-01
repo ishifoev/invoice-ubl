@@ -95,14 +95,14 @@ $legalMonetaryTotal = (new \Ishifoev\Invoice\Legal\LegalMonetaryTotal())
  ->setId('S')
  ->setPercent(21.00)
  ->setTaxScheme($taxScheme);
- var_dump($classifiedTaxCategory);
- exit;
+
   // Product
-  $productItem = (new Item())
+  $productItem = (new \Ishifoev\Invoice\Item())
   ->setName('Product Name')
   ->setClassifiedTaxCategory($classifiedTaxCategory)
   ->setDescription('Product Description');
-
+  var_dump($productItem);
+  exit;
 // Price
  $price = (new Price())
        ->setBaseQuantity(1)
