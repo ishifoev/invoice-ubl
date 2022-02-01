@@ -130,7 +130,7 @@ $invoiceLine = (new  \Ishifoev\Invoice\Invoice\InvoiceLine())
 
 $invoiceLines = [$invoiceLine];
 
-$taxCategory = (new  \Ishifoev\Invoice\Invoice\TaxCategory())
+$taxCategory = (new  \Ishifoev\Invoice\Tax\TaxCategory())
             ->setId('S', [])
             ->setPercent(21.00)
             ->setTaxScheme($taxScheme);

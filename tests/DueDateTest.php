@@ -94,7 +94,7 @@ class DueDateTest extends TestCase {
             ->setLegalMonetaryTotal($legalMonetaryTotal)
             ->setTaxTotal($taxTotal);
 
-            $generateInvoice = new GenerateInvoice();
+            $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
             $outputXMLString = $generateInvoice->invoice($invoice);
 
             $dom = new \DOMDocument;
