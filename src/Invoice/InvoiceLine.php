@@ -9,6 +9,7 @@ use Ishifoev\Invoice\Item;
 use Ishifoev\Invoice\Payment\Price;
 use Ishifoev\Invoice\Invoice\InvoicePeriod;
 use Ishifoev\Invoice\Schema;
+use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
 class InvoiceLine implements XmlSerializable
 {

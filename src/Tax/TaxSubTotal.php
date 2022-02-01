@@ -7,6 +7,7 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\TaxCategory;
 use Ishifoev\Invoice\Schema;
+use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
 
 class TaxSubTotal implements XmlSerializable {

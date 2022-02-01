@@ -5,6 +5,7 @@ namespace Ishifoev\Invoice\Payment;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Ishifoev\Invoice\Invoice\GenerateInvoice;
 
 class Price implements XmlSerializable {
     private $priceAmount;
