@@ -3,6 +3,7 @@
 namespace Ishifoev\Invoice\Invoice;
 
 use Sabre\Xml\Service;
+use Ishifoev\Invoice\Schema;
 
 class GenerateInvoice
 {

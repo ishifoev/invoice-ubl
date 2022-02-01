@@ -193,12 +193,12 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
    ->setByerReference('BUYER_REF')
    ->setOrderReference($orderReference)
    ->setTaxTotal($taxTotal);
-   var_dump($invoice);
-  exit;
 
 
-  $generateInvoice = new GenerateInvoice();
+  $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
+  var_dump($outputXMLString);
+  exit;
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
   //$sign = new Signature;
