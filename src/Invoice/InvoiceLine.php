@@ -5,6 +5,9 @@ namespace Ishifoev\Invoice\Invoice;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Payment\UnitCode;
+use Ishifoev\Invoice\Item;
+use Ishifoev\Invoice\Payment\Price;
+use Ishifoev\Invoice\Invoice\InvoicePeriod;
 
 class InvoiceLine implements XmlSerializable
 {
