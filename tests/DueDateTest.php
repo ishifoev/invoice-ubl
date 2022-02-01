@@ -42,7 +42,7 @@ class DueDateTest extends TestCase {
         // Price
         $price = (new  \Ishifoev\Invoice\Payment\Price())
         ->setBaseQuantity(1)
-        ->setUnitCode(UnitCode::UNIT)
+        ->setUnitCode(\Ishifoev\Invoice\Payment\UnitCode::UNIT)
         ->setPriceAmount(10);
 
         // Invoice Line tax totals

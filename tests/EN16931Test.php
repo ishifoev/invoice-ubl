@@ -36,7 +36,7 @@ $address = (new  \Ishifoev\Invoice\Account\PostalAddress())
 $financialInstitutionBranch = (new  \Ishifoev\Invoice\Financial\FinancialInstitutionBranch())
                 ->setId('RABONL2U');
 
-$payeeFinancialAccount = (new  \Ishifoev\Invoice\Payment\PayeeFinancialAccount())
+$payeeFinancialAccount = (new  \Ishifoev\Invoice\Financial\PayeeFinancialAccount())
                ->setFinancialInstitutionBranch($financialInstitutionBranch)
                 ->setName('Customer Account Holder')
                 ->setId('NL00RABO0000000000');

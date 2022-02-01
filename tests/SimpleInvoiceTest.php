@@ -28,7 +28,7 @@ class SimpleInvoiceTest extends TestCase {
                 ->setCountry($country);
 
         // Supplier company node
-        $supplierCompany = (new  \Ishifoev\Invoice\Account\Party())
+        $supplierCompany = (new  \Ishifoev\Invoice\Party\Party())
         ->setName('Supplier Company Name')
         ->setPhysicalLocation($address)
         ->setPostalAddress($address);
@@ -60,7 +60,7 @@ class SimpleInvoiceTest extends TestCase {
         // Price
         $price = (new  \Ishifoev\Invoice\Payment\Price())
             ->setBaseQuantity(1)
-            ->setUnitCode(UnitCode::UNIT)
+            ->setUnitCode(\Ishifoev\Invoice\Payment\UnitCode::UNIT)
             ->setPriceAmount(10);
 
         // Invoice Line tax totals

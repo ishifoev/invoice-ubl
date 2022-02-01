@@ -10,6 +10,7 @@ use Ishifoev\Invoice\Payment\Price;
 use Ishifoev\Invoice\Invoice\InvoicePeriod;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
+use Ishifoev\Invoice\Tax\TaxTotal;
 
 class InvoiceLine implements XmlSerializable
 {
