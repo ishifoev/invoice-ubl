@@ -197,6 +197,10 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
 
   $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
+
+ $deserialize = new \Ishifoev\Invoice\DeserializeInvoice();
+ var_dump($deserialize->deserializeXML($outputXMLString));
+ exit;
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
   //$sign = new Signature;
@@ -209,7 +213,3 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   $client = new \SoapClient($wsdl);
   $response = $client->validate(['XML' => $outputXMLString, 'VESID' => 'eu.cen.en16931:ubl:1.3.7']);
   echo json_encode($response);
-
- $deserialize = new \Ishifoev\Invoice\DeserializeInvoice();
- var_dump($deserialize->deserializeXML($outputXMLString));
- exit;

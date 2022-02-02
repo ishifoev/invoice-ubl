@@ -9,7 +9,7 @@ class DeserializeInvoice
   //Use Deserialization
     public function deserializeXML($outputXMLString)
     {
-        $service = new Sabre\Xml\Service();
+        $service = new Service();
         $result = $service->parse($outputXMLString);
         return $this->flatten($result);
     }
