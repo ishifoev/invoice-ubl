@@ -4,55 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6435287ac0827b39e67ddc5f02d9fb0c",
+    "content-hash": "39af44aef520f7489549896d30dbc47f",
     "packages": [
-        {
-            "name": "ishifoev/invoice-ubl",
-            "version": "1.01",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ishifoev/invoice-ubl.git",
-                "reference": "fe5f49a4f92cc46d2eaa643d0fb0c714c58607b2"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ishifoev/invoice-ubl/zipball/fe5f49a4f92cc46d2eaa643d0fb0c714c58607b2",
-                "reference": "fe5f49a4f92cc46d2eaa643d0fb0c714c58607b2",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^7.1",
-                "sabre/xml": "^2.1"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^7.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Ishifoev\\Invoice\\": "src/",
-                    "Ishifoev\\Invoice\\Tests\\": "tests/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Ismoil Shifoev",
-                    "email": "ismail94.94@mail.ru",
-                    "role": "Software Engineer"
-                }
-            ],
-            "description": "A library for valid EN16931 UBL files",
-            "homepage": "https://github.com/ishifoev/invoice-ubl",
-            "support": {
-                "issues": "https://github.com/ishifoev/invoice-ubl/issues",
-                "source": "https://github.com/ishifoev/invoice-ubl/tree/1.01"
-            },
-            "time": "2022-01-31T12:05:15+00:00"
-        },
         {
             "name": "sabre/uri",
             "version": "2.2.2",

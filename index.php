@@ -198,9 +198,6 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
 
- $deserialize = new \Ishifoev\Invoice\DeserializeInvoice();
- var_dump($deserialize->deserializeXML($outputXMLString));
- exit;
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
   //$sign = new Signature;

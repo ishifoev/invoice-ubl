@@ -17,6 +17,7 @@ use Ishifoev\Invoice\Schema;
 
 use DateTime as DateTime;
 use InvalidArgumentException as InvalidArgumentException;
+use Ishifoev\Invoice\Invoice\InvoiceTypeCode;
 
 
 class Invoice implements XmlSerializable
