@@ -7,8 +7,10 @@ use InvalidArgumentException;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class Attachment implements XmlSerializable
+class Attachment implements XmlSerializable, XmlDeserializable
 {
     private $filePath;
     private $externalReference;
@@ -98,5 +100,25 @@ class Attachment implements XmlSerializable
                 [ Schema::CBC . 'URI' => $this->externalReference ]
             );
         }
+    }
+
+    /**
+     * Deserialize Attachment
+     */
+
+    static function xmlDeserialize(Reader $reader)
+    {
+        $attachment = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if (isset($keyValue[Schema::CBC . 'EmbeddedDocumentBinaryObject'])) {
+            $attachment->filePath = $keyValue[Schema::CBC . 'EmbeddedDocumentBinaryObject'];
+        }
+        if (isset($keyValue[Schema::CAC . 'ExternalReference'])) {
+            $attachment->externalReference = $keyValue[Schema::CBC . 'ExternalReference'];
+        }
+
+        return $attachment;
     }
 }

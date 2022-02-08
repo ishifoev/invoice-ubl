@@ -124,5 +124,6 @@ class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
         if (isset($keyValue[Schema::CAC . 'Attachment'])) {
             $delivery->attachment = $keyValue[Schema::CAC . 'Attachment'];
         }
+        return $addtionalDocumentReference;
     }
 }
