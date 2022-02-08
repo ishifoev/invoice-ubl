@@ -5,8 +5,10 @@ namespace Ishifoev\Invoice\Documents;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class ContractDocumentReference implements XmlSerializable
+class ContractDocumentReference implements XmlSerializable, XmlDeserializable
 {
     private $id;
 
@@ -38,5 +40,20 @@ class ContractDocumentReference implements XmlSerializable
               Schema::CBC . 'ID' => $this->id
             ]);
         }
+    }
+
+     /**
+     * Deserialize ContactDocumentReference
+     */
+    static function xmlDeserialize(Reader $reader)
+    {
+        $contactDocRef = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
+            $contactDocRef->id = $keyValue[Schema::CBC . 'ID'];
+        }
+        return $contactDocRef;
     }
 }
