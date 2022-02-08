@@ -198,6 +198,11 @@ $orderReference = (new \Ishifoev\Invoice\Payment\OrderReference())
   $generateInvoice = new \Ishifoev\Invoice\Invoice\GenerateInvoice();
   $outputXMLString = $generateInvoice->invoice($invoice);
 
+  //Deserialize UBL Invoice
+  $des = new Ishifoev\Invoice\DeserializeInvoice;
+  $res = $des->deserializeXML($outputXMLString);
+
+
   $dom = new \DOMDocument;
   $dom->loadXML($outputXMLString);
   //$sign = new Signature;
