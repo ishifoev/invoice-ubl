@@ -5,11 +5,12 @@ namespace Ishifoev\Invoice\Account;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
-
 use DateTime as DateTime;
 use Ishifoev\Invoice\Account\PostalAddress;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class Delivery implements XmlSerializable
+class Delivery implements XmlSerializable, XmlDeserializable
 {
     private $actualDeliveryDate;
     private $deliveryLocation;
@@ -86,6 +87,28 @@ class Delivery implements XmlSerializable
             $writer->write([
                 Schema::CAC . 'DeliveryParty' => $this->deliveryParty
             ]);
+        }
+    }
+
+    /**
+     * Deserialize Delivery
+     */
+    static function xmlDeserialize(Reader $reader)
+    {
+        $delivery = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if (isset($keyValue[Schema::CBC . 'ActualDeliveryDate'])) {
+            $delivery->actualDeliveryDate = $keyValue[Schema::CBC . 'ActualDeliveryDate'];
+        }
+
+        if (isset($keyValue[Schema::CAC . 'DeliveryLocation' ])) {
+            $delivery->deliveryLocation = $keyValue[Schema::CAC . 'DeliveryLocation'];
+        }
+
+        if (isset($keyValue[Schema::CAC . 'DeliveryParty' ])) {
+            $delivery->deliveryParty = $keyValue[Schema::CAC . 'DeliveryParty'];
         }
     }
 }

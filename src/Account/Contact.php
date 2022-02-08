@@ -118,23 +118,24 @@ class Contact implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Contact
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $contact = new self();
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC .'Name'])) {
+        if (isset($keyValue[Schema::CBC .'Name'])) {
             $contact->name = $keyValue[Schema::CBC .'Name'];
         }
 
-        if(isset($keyValue[Schema::CBC .'Telephone'])) {
+        if (isset($keyValue[Schema::CBC .'Telephone'])) {
             $contact->telephone = $keyValue[Schema::CBC .'Telephone'];
         }
 
-        if(isset($keyValue[Schema::CBC .'Telefax'])) {
+        if (isset($keyValue[Schema::CBC .'Telefax'])) {
             $contact->telefax = $keyValue[Schema::CBC .'Telefax'];
         }
 
-        if(isset($keyValue[Schema::CBC .'ElectronicMail'])) {
+        if (isset($keyValue[Schema::CBC .'ElectronicMail'])) {
             $contact->electronicMail = $keyValue[Schema::CBC .'ElectronicMail'];
         }
         return $contact;
