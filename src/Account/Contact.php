@@ -137,5 +137,6 @@ class Contact implements XmlSerializable, XmlDeserializable
         if(isset($keyValue[Schema::CBC .'ElectronicMail'])) {
             $contact->electronicMail = $keyValue[Schema::CBC .'ElectronicMail'];
         }
+        return $contact;
     }
 }

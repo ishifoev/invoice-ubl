@@ -5,8 +5,10 @@ namespace Ishifoev\Invoice\Account;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class Country implements XmlSerializable
+class Country implements XmlSerializable, XmlDeserializable
 {
     private $identificationCode;
 
@@ -41,5 +43,18 @@ class Country implements XmlSerializable
         $writer->write([
             Schema::CBC . 'IdentificationCode' => $this->identificationCode
         ]);
+    }
+
+    /**
+     * XML Deserialize for Country
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $country = new self();
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC .'IdentificationCode'])) {
+            $country->identificationCode = $keyValue[Schema::CBC .'IdentificationCode'];
+        }
+        return $country;
     }
 }
