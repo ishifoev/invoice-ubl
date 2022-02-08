@@ -4,9 +4,11 @@ namespace Ishifoev\Invoice\Account;
 
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 use Ishifoev\Invoice\Schema;
 
-class Contact implements XmlSerializable
+class Contact implements XmlSerializable, XmlDeserializable
 {
     private $name;
     private $telephone;
@@ -110,6 +112,30 @@ class Contact implements XmlSerializable
             $writer->write([
                 Schema::CBC . 'ElectronicMail' . $this->electronicMail
             ]);
+        }
+    }
+
+    /**
+     * Deserialize Contact
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $contact = new self();
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC .'Name'])) {
+            $contact->name = $keyValue[Schema::CBC .'Name'];
+        }
+
+        if(isset($keyValue[Schema::CBC .'Telephone'])) {
+            $contact->telephone = $keyValue[Schema::CBC .'Telephone'];
+        }
+
+        if(isset($keyValue[Schema::CBC .'Telefax'])) {
+            $contact->telefax = $keyValue[Schema::CBC .'Telefax'];
+        }
+
+        if(isset($keyValue[Schema::CBC .'ElectronicMail'])) {
+            $contact->electronicMail = $keyValue[Schema::CBC .'ElectronicMail'];
         }
     }
 }
