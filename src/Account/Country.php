@@ -48,11 +48,12 @@ class Country implements XmlSerializable, XmlDeserializable
     /**
      * XML Deserialize for Country
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $country = new self();
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC .'IdentificationCode'])) {
+        if (isset($keyValue[Schema::CBC .'IdentificationCode'])) {
             $country->identificationCode = $keyValue[Schema::CBC .'IdentificationCode'];
         }
         return $country;
