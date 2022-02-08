@@ -5,10 +5,10 @@ namespace Ishifoev\Invoice\Financial;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-//require 'Schema.php';
-
-class FinancialInstitutionBranch implements XmlSerializable
+class FinancialInstitutionBranch implements XmlSerializable, XmlDeserializable
 {
     private $id;
 
@@ -38,5 +38,19 @@ class FinancialInstitutionBranch implements XmlSerializable
         $writer->write([
            Schema::CBC . 'ID' => $this->id
         ]);
+    }
+
+     /**
+     * Deserialize XML FinancialInstitutionBranch
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $financial = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'ID'])) {
+            $financial->id = $keyValue[Schema::CBC . 'ID'];
+        }
+        return $financial;
     }
 }

@@ -5,8 +5,11 @@ namespace Ishifoev\Invoice\Financial;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class PayeeFinancialAccount implements XmlSerializable
+
+class PayeeFinancialAccount implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $name;
@@ -88,5 +91,28 @@ class PayeeFinancialAccount implements XmlSerializable
                 Schema::CAC . 'FinancialInstitutionBranch' => $this->getFinancialInstitutionBranch()
             ]);
         }
+    }
+
+    /**
+     * Deserialize Payee Financial Account
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $payeeFinancial = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'ID'])) {
+            $financial->id = $keyValue[Schema::CBC . 'ID'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'Name'])) {
+            $financial->name = $keyValue[Schema::CBC . 'Name'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'FinancialInstitutionBranch'])) {
+            $financial->financialInstitutionBranch = $keyValue[Schema::CAC . 'FinancialInstitutionBranch'];
+        }
+
+        return $payeeFinancial;
     }
 }
