@@ -41,8 +41,8 @@ $paymentMeans = (new  \Ishifoev\Invoice\Payment\PaymentMeans())
                 ->setPaymentId('our invoice 1234');
 
  // Supplier company node
- $supplierLegalEntity = (new \Ishifoev\Invoice\Legal\LegalEntity())		// $doc = new DOMDocument();
-		// $doc->load($path);
+ $supplierLegalEntity = (new \Ishifoev\Invoice\Legal\LegalEntity())     // $doc = new DOMDocument();
+        // $doc->load($path);
  ->setRegistrationNumber('PonderSource')
  ->setCompanyId('NL123456789');
 

@@ -161,32 +161,33 @@ class PostalAddress implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Postal Address
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         //$this->validate();
         $postalAddress = new self();
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
     
-        if(isset($keyValue[Schema::CBC .'StreetName'])) {
+        if (isset($keyValue[Schema::CBC .'StreetName'])) {
             $postalAddress->streetName = $keyValue[Schema::CBC .'StreetName'];
         }
 
-        if(isset($keyValue[Schema::CBC .'AdditionalStreetName'])) {
+        if (isset($keyValue[Schema::CBC .'AdditionalStreetName'])) {
             $postalAddress->additionalStreetName = $keyValue[Schema::CBC .'AdditionalStreetName'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'BuildingNumber'])) {
+        if (isset($keyValue[Schema::CBC . 'BuildingNumber'])) {
             $postalAddress->buildingNumber = $keyValue[Schema::CBC .'BuildingNumber'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'CityName'])) {
+        if (isset($keyValue[Schema::CBC . 'CityName'])) {
             $postalAddress->cityName = $keyValue[Schema::CBC .'CityName'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'PostalZone'])) {
+        if (isset($keyValue[Schema::CBC . 'PostalZone'])) {
             $postalAddress->postalZone = $keyValue[Schema::CBC . 'PostalZone'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'Country'])) {
+        if (isset($keyValue[Schema::CAC . 'Country'])) {
             $postalAddress->postalZone = $keyValue[Schema::CAC . 'Country'];
         }
         return $postalAddress;
