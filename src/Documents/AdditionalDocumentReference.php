@@ -5,8 +5,10 @@ namespace Ishifoev\Invoice\Documents;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class AdditionalDocumentReference implements XmlSerializable
+class AdditionalDocumentReference implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $documentTypeCode;
@@ -93,5 +95,35 @@ class AdditionalDocumentReference implements XmlSerializable
             $writer->write([ Schema::CBC . 'DocumentDescription' => $this->documentDescription ]);
         }
         $writer->write([ Schema::CAC . 'Attachment' => $this->attachment ]);
+    }
+
+    /**
+     * Deserialize Additonal Document Reference
+     */
+     /**
+     * Deserialize Delivery
+     */
+    static function xmlDeserialize(Reader $reader)
+    {
+        $addtionalDocumentReference = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
+            $delivery->id = $keyValue[Schema::CBC . 'ID'];
+        }
+
+        if (isset($keyValue[Schema::CBC . 'DocumentTypeCode'])) {
+            $delivery->documentDescription = $keyValue[Schema::CBC . 'DocumentTypeCode'];
+        }
+
+        if (isset($keyValue[Schema::CBC . 'DocumentDescription'])) {
+            $delivery->documentTypeCode = $keyValue[Schema::CBC . 'DocumentDescription'];
+        }
+
+        if (isset($keyValue[Schema::CAC . 'Attachment'])) {
+            $delivery->attachment = $keyValue[Schema::CAC . 'Attachment'];
+        }
+        return $addtionalDocumentReference;
     }
 }

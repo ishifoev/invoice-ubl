@@ -110,5 +110,6 @@ class Delivery implements XmlSerializable, XmlDeserializable
         if (isset($keyValue[Schema::CAC . 'DeliveryParty' ])) {
             $delivery->deliveryParty = $keyValue[Schema::CAC . 'DeliveryParty'];
         }
+        return $delivery;
     }
 }
