@@ -114,20 +114,4 @@ class DeserializeInvoice
       $outputXML = json_decode($res);
       return $outputXML;
     }
-
-    public function flatten($array)
-    {
-        if (!is_array($array)) {
-            // nothing to do if it's not an array
-            return array($array);
-        }
-
-        $res = array();
-        foreach ($array as $value) {
-            // explode the sub-array, and add the parts
-            $res = array_merge($res, $this->flatten($value));
-        }
-
-        return $res;
-    }
 }
