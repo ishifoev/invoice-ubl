@@ -6,8 +6,10 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\TaxCategory;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class AllowanceCharge implements XmlSerializable
+class AllowanceCharge implements XmlSerializable, XmlDeserializable
 {
     private $chargeIndicator;
     private $allowanceChargeReasonCode;
@@ -188,5 +190,42 @@ class AllowanceCharge implements XmlSerializable
                  ]
              ]);
         }
+    }
+
+    /**
+     * Deserialize AllowanceCharge
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $allowanceCharge = new self();
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+        if(isset($keyValue[Schema::CBC . 'ChargeIndicator'])) {
+            $allowanceCharge->chargeIndicator = $keyValue[Schema::CBC . 'ChargeIndicator'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'AllowanceChargeReasonCode'])) {
+            $allowanceCharge->allowanceChargeReasonCode = $keyValue[Schema::CBC . 'AllowanceChargeReasonCode'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'AllowanceChargeReason'])) {
+            $allowanceCharge->allowanceChargeReason = $keyValue[Schema::CBC . 'AllowanceChargeReason'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'MultiplierFactorNumeric'])) {
+            $allowanceCharge->multiplierFactorNumeric = $keyValue[Schema::CBC . 'MultiplierFactorNumeric'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'Amount'])) {
+            $allowanceCharge->amount = $keyValue[Schema::CBC . 'Amount'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'TaxCategory'])) {
+            $allowanceCharge->taxCategory = $keyValue[Schema::CAC . 'TaxCategory'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'BaseAmount'])) {
+            $allowanceCharge->baseAmount = $keyValue[Schema::CBC . 'BaseAmount'];
+        }
+
+        return $allowanceCharge;
     }
 }

@@ -6,8 +6,10 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 use DateTime;
 use InvalidArgumentException;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class SettlementPeriod implements XmlSerializable
+class SettlementPeriod implements XmlSerializable, XmlDeserializable
 {
     private $startDate;
     private $endDate;
@@ -88,5 +90,22 @@ class SettlementPeriod implements XmlSerializable
                 ]
             ]
         ]);
+    }
+
+    /**
+     * Deserialize Settlement Period
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $settlementPeriod = new self();
+
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'StartDate'])) {
+            $finansettlementPeriodcial->startDate = $keyValue[Schema::CBC . 'StartDate'];
+        }
+        if(isset($keyValue[Schema::CBC . 'EndDate'])) {
+            $finansettlementPeriodcial->endDate = $keyValue[Schema::CBC . 'EndDate'];
+        }
+        return $settlementPeriod;
     }
 }
