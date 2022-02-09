@@ -6,8 +6,10 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class Price implements XmlSerializable
+class Price implements XmlSerializable, XmlDeserializable
 {
     private $priceAmount;
     private $baseQuantity;
@@ -87,5 +89,23 @@ class Price implements XmlSerializable
                 ]
             ]
         ]);
+    }
+
+    /**
+     * Deserialize Prices
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $price = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'PriceAmount'])) {
+            $price->priceAmount = $keyValue[Schema::CBC . 'PriceAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'BaseQuantity'])) {
+            $price->baseQuantity = $keyValue[Schema::CBC . 'BaseQuantity'];
+        }
+        return $price;
     }
 }
