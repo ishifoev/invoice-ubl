@@ -5,9 +5,10 @@ namespace Ishifoev\Invoice\Party;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
-//require 'Schema.php';
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class TaxScheme implements XmlSerializable
+class TaxScheme implements XmlSerializable, XmlDeserializable
 {
     private $id;
     /**
@@ -36,5 +37,19 @@ class TaxScheme implements XmlSerializable
         $writer->write([
           Schema::CBC . 'ID' => $this->id
         ]);
+    }
+
+    /**
+     * Deserialize XML TaxScheme
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $taxScheme = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'ID'])) {
+            $taxScheme->id = $keyValue[Schema::CBC . 'ID'];
+        }
+        return $taxScheme;
     }
 }
