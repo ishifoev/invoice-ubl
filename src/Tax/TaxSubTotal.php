@@ -8,9 +8,11 @@ use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Tax\TaxCategory;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
 
-class TaxSubTotal implements XmlSerializable
+class TaxSubTotal implements XmlSerializable, XmlDeserializable
 {
     private $taxableAmount;
     private $taxAmount;
@@ -136,5 +138,31 @@ class TaxSubTotal implements XmlSerializable
         $writer->write([
             Schema::CAC . 'TaxCategory' => $this->taxCategory
         ]);
+    }
+
+    /**
+     * Deserialize Tax Subtotal
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $taxSubtotal = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'TaxableAmount'])) {
+            $taxSubtotal->taxableAmount = $keyValue[Schema::CBC . 'TaxableAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'TaxAmount'])) {
+            $taxSubtotal->taxAmount = $keyValue[Schema::CBC . 'TaxAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'Percent'])) {
+            $taxSubtotal->percent = $keyValue[Schema::CBC . 'Percent'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'TaxCategory'])) {
+            $taxSubtotal->taxCategory = $keyValue[Schema::CBC . 'TaxCategory'];
+        }
+        return $taxSubtotal;
     }
 }
