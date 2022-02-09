@@ -6,11 +6,11 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Party\TaxScheme;
 use Ishifoev\Invoice\Schema;
-
-
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 use InvalidArgumentException as InvalidArgumentException;
 
-class TaxCategory implements XmlSerializable
+class TaxCategory implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $idAttributes = [
@@ -214,5 +214,40 @@ class TaxCategory implements XmlSerializable
                 Schema::CAC . 'TaxScheme' => null,
             ]);
         }
+    }
+
+    /**
+     * Deserialize tax category
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $taxCategory = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'ID'])) {
+            $taxCategory->id = $keyValue[Schema::CBC . 'ID'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'Name'])) {
+            $taxCategory->name = $keyValue[Schema::CBC . 'Name'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'Percent'])) {
+            $taxCategory->percent = $keyValue[Schema::CBC . 'Percent'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'TaxExemptionReasonCode'])) {
+            $taxCategory->taxExemptionReasonCode = $keyValue[Schema::CBC . 'TaxExemptionReasonCode'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'TaxExemptionReason'])) {
+            $taxCategory->taxExemptionReason = $keyValue[Schema::CBC . 'TaxExemptionReason'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+            $taxCategory->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
+        }
+
+        return $taxCategory;
     }
 }
