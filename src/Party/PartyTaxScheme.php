@@ -7,8 +7,10 @@ use InvalidArgumentException as InvalidArgumentException;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class PartyTaxScheme implements XmlSerializable
+class PartyTaxScheme implements XmlSerializable, XmlDeserializable
 {
     private $companyId;
     private $taxScheme;
@@ -71,5 +73,23 @@ class PartyTaxScheme implements XmlSerializable
         $writer->write([
             Schema::CAC . 'TaxScheme' => $this->taxScheme
         ]);
+    }
+
+    /**
+     * Deserialize Party Tax Scheme
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $partyTaxScheme = new self(); 
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'CompanyID'])) {
+            $partyTaxScheme->companyId = $keyValue[Schema::CBC . 'CompanyID'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+            $partyTaxScheme->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
+        }
+        return $partyTaxScheme;
     }
 }
