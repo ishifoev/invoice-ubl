@@ -7,8 +7,10 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Financial\PayeeFinancialAccount;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class PaymentMeans implements XmlSerializable
+class PaymentMeans implements XmlSerializable, XmlDeserializable
 {
     private $paymentMeansCode = 1;
     private $paymentMeansCodeAttributes = [
@@ -131,5 +133,27 @@ class PaymentMeans implements XmlSerializable
                 Schema::CAC . 'PayeeFinancialAccount' => $this->getPayeeFinancialAccount()
             ]);
         }
+    }
+
+    /**
+     * Deserialize PaymentMeans
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $paymentMeans = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'PaymentMeansCode'])) {
+            $paymentMeans->paymentMeansCode = $keyValue[Schema::CBC . 'PaymentMeansCode'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'PaymentID'])) {
+            $paymentMeans->paymentId = $keyValue[Schema::CBC . 'PaymentID'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'PayeeFinancialAccount'])) {
+            $paymentMeans->payeeFinancialAccount = $keyValue[Schema::CAC . 'PayeeFinancialAccount'];
+        }
+        return $paymentMeans;
     }
 }

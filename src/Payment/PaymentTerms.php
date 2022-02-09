@@ -5,8 +5,10 @@ namespace Ishifoev\Invoice\Payment;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class PaymentTerms implements XmlSerializable
+class PaymentTerms implements XmlSerializable, XmlDeserializable
 {
     private $note;
 
@@ -34,5 +36,18 @@ class PaymentTerms implements XmlSerializable
         if ($this->note !== null) {
             $writer->write([ Schema::CBC . 'Note' => $this->note ]);
         }
+    }
+
+    /**
+     * Deserialize Payment Terms
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $paymentTerms = new self();
+         
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+        if(isset($keyValue[Schema::CBC . 'Note'])) {
+            $paymentTerms->note = $keyValue[Schema::CBC . 'Note'];
+        }
+        return $paymentTerms;
     }
 }

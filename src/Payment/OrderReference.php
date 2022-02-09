@@ -5,8 +5,11 @@ namespace Ishifoev\Invoice\Payment;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class OrderReference implements XmlSerializable
+
+class OrderReference implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $salesOrderId;
@@ -63,5 +66,23 @@ class OrderReference implements XmlSerializable
                 Schema::CBC . 'SalesOrderID' => $this->salesOrderId
             ]);
         }
+    }
+
+    /**
+     * Deserialize OrderReference
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $orderReference = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'ID'])) {
+            $orderReference->id = $keyValue[Schema::CBC . 'ID'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'SalesOrderID'])) {
+            $orderReference->salesOrderId = $keyValue[Schema::CBC . 'SalesOrderID'];
+        }
+        return $orderReference;
     }
 }
