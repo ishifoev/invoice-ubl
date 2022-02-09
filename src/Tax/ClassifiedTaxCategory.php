@@ -6,11 +6,13 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Party\TaxScheme;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
 
 use InvalidArgumentException as InvalidArgumentException;
 
-class ClassifiedTaxCategory implements XmlSerializable
+class ClassifiedTaxCategory implements XmlSerializable, XmlDeserializable
 {
     private $id;
     private $percent;
@@ -129,5 +131,26 @@ class ClassifiedTaxCategory implements XmlSerializable
                 Schema::CAC . 'TaxScheme' => null,
             ]);
         }
+    }
+
+    /**
+     * Deserialize Classified Tax Category
+     */
+    static function xmlDeserialize(Reader $reader) {
+       $classifiedTaxCategory = new self();
+
+       $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+       if(isset($keyValue[Schema::CBC . 'ID'])) {
+          $classifiedTaxCategory->id = $keyValue[Schema::CBC . 'ID'];
+       }
+
+       if(isset($keyValue[Schema::CBC . 'Percent'])) {
+          $classifiedTaxCategory->percent = $keyValue[Schema::CBC . 'Percent'];
+       }
+       if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+          $classifiedTaxCategory->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
+       }
+       return $classifiedTaxCategory;
     }
 }
