@@ -8,9 +8,11 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
 
-class TaxTotal implements XmlSerializable
+class TaxTotal implements XmlSerializable, XmlDeserializable
 {
     private $taxAmount;
     private $taxSubTotals = [];
@@ -75,5 +77,23 @@ class TaxTotal implements XmlSerializable
         foreach ($this->taxSubTotals as $taxSubTotal) {
             $writer->write([ Schema::CAC . 'TaxSubtotal' => $taxSubTotal]);
         }
+    }
+
+    /**
+     * Deserilize TaxTotal
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $taxTotal = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'TaxAmount'])) {
+            $taxTotal->taxAmount = $keyValue[Schema::CBC . 'TaxAmount'];
+        }
+
+        if(isset($keyValue[Schema::CAC . 'TaxSubtotal'])) {
+            $taxTotal->taxSubTotal = $keyValue[Schema::CAC . 'TaxSubtotal'];
+        }
+        return $taxTotal;
     }
 }
