@@ -7,8 +7,10 @@ use DateTime as DateTime;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class InvoicePeriod implements XmlSerializable
+class InvoicePeriod implements XmlSerializable, XmlDeserializable
 {
     private $startDate;
     private $endDate;
@@ -69,7 +71,26 @@ class InvoicePeriod implements XmlSerializable
         }
 
         if ($this->endDate !== null) {
-            $writer->write([ Schema::CBC . 'StartDate' => $this->endDate->format('Y-m-d') ]);
+            $writer->write([ Schema::CBC . 'EndDate' => $this->endDate->format('Y-m-d') ]);
         }
+    }
+
+    /**
+     * Deserialize Invoice Period
+     */
+    static function xmlDeserialze(Reader $reader) {
+        $invoicePeriod = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'StartDate'])) {
+            $invoicePeriod->startDate = $keyValue[Schema::CBC . 'StartDate'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'EndDate'])) {
+            $invoicePeriod->endDate = $keyValue[Schema::CBC . 'EndDate'];
+        }
+        
+        return $invoicePeriod;
     }
 }
