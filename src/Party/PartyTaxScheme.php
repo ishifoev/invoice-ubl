@@ -78,16 +78,17 @@ class PartyTaxScheme implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Party Tax Scheme
      */
-    static function xmlDeserialize(Reader $reader) {
-        $partyTaxScheme = new self(); 
+    static function xmlDeserialize(Reader $reader)
+    {
+        $partyTaxScheme = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'CompanyID'])) {
+        if (isset($keyValue[Schema::CBC . 'CompanyID'])) {
             $partyTaxScheme->companyId = $keyValue[Schema::CBC . 'CompanyID'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxScheme'])) {
             $partyTaxScheme->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
         }
         return $partyTaxScheme;

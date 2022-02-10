@@ -90,16 +90,17 @@ class LegalEntity implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Legal Entity
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $legalEntity = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'RegistrationName'])) {
+        if (isset($keyValue[Schema::CBC . 'RegistrationName'])) {
             $legalEntity->registrationName = $keyValue[Schema::CBC . 'RegistrationName'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'CompanyID'])) {
+        if (isset($keyValue[Schema::CBC . 'CompanyID'])) {
             $legalEntity->companyId = $keyValue[Schema::CBC . 'CompanyID'];
         }
         

@@ -95,15 +95,16 @@ class SettlementPeriod implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Settlement Period
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $settlementPeriod = new self();
 
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'StartDate'])) {
+        if (isset($keyValue[Schema::CBC . 'StartDate'])) {
             $finansettlementPeriodcial->startDate = $keyValue[Schema::CBC . 'StartDate'];
         }
-        if(isset($keyValue[Schema::CBC . 'EndDate'])) {
+        if (isset($keyValue[Schema::CBC . 'EndDate'])) {
             $finansettlementPeriodcial->endDate = $keyValue[Schema::CBC . 'EndDate'];
         }
         return $settlementPeriod;

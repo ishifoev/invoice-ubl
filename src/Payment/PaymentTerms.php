@@ -41,11 +41,12 @@ class PaymentTerms implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Payment Terms
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $paymentTerms = new self();
          
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
-        if(isset($keyValue[Schema::CBC . 'Note'])) {
+        if (isset($keyValue[Schema::CBC . 'Note'])) {
             $paymentTerms->note = $keyValue[Schema::CBC . 'Note'];
         }
         return $paymentTerms;

@@ -226,39 +226,40 @@ class Party implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Party
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $party = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'EndpointID'])) {
+        if (isset($keyValue[Schema::CBC . 'EndpointID'])) {
             $party->partyIdentificationId = $keyValue[Schema::CBC . 'EndpointID'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PartyIdentification' . [Schema::CBC . 'ID']])) {
+        if (isset($keyValue[Schema::CAC . 'PartyIdentification' . [Schema::CBC . 'ID']])) {
             $party->endpointID = $keyValue[Schema::CAC . 'PartyIdentification' .[Schema::CBC . 'ID']];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PartyName' . [Schema::CBC . 'Name']])) {
+        if (isset($keyValue[Schema::CAC . 'PartyName' . [Schema::CBC . 'Name']])) {
             $party->name = $keyValue[Schema::CAC . 'PartyName' .[Schema::CBC . 'Name']];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PostalAddress'])) {
+        if (isset($keyValue[Schema::CAC . 'PostalAddress'])) {
             $party->postalAddress = $keyValue[Schema::CBC . 'PostalAddress'];
         }
-        if(isset($keyValue[Schema::CAC . 'PhysicalLocation' . [Schema::CAC . 'Address']])) {
+        if (isset($keyValue[Schema::CAC . 'PhysicalLocation' . [Schema::CAC . 'Address']])) {
             $party->physicalLocation = $keyValue[Schema::CAC . 'PhysicalLocation' . [Schema::CAC . 'Address']];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PartyTaxScheme'])) {
+        if (isset($keyValue[Schema::CAC . 'PartyTaxScheme'])) {
             $party->partyTaxScheme = $keyValue[Schema::CAC . 'PartyTaxScheme'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PartyLegalEntity'])) {
+        if (isset($keyValue[Schema::CAC . 'PartyLegalEntity'])) {
             $party->legalEntity = $keyValue[Schema::CAC . 'PartyLegalEntity'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'Contact'])) {
+        if (isset($keyValue[Schema::CAC . 'Contact'])) {
             $party->contact = $keyValue[Schema::CAC . 'Contact'];
         }
         return $party;

@@ -82,16 +82,17 @@ class TaxTotal implements XmlSerializable, XmlDeserializable
     /**
      * Deserilize TaxTotal
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $taxTotal = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'TaxAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxAmount'])) {
             $taxTotal->taxAmount = $keyValue[Schema::CBC . 'TaxAmount'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxSubtotal'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxSubtotal'])) {
             $taxTotal->taxSubTotal = $keyValue[Schema::CAC . 'TaxSubtotal'];
         }
         return $taxTotal;

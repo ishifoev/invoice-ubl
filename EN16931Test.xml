@@ -4,14 +4,14 @@
  <cbc:CustomizationID>urn:cen.eu:en16931:2017</cbc:CustomizationID>
  <cbc:ProfileID>urn:fdc:peppol.eu:2017</cbc:ProfileID>
  <cbc:ID>1234</cbc:ID>
- <cbc:IssueDate>2022-02-09</cbc:IssueDate>
+ <cbc:IssueDate>2022-02-10</cbc:IssueDate>
  <cbc:InvoiceTypeCode>380</cbc:InvoiceTypeCode>
  <cbc:Note>invoice note</cbc:Note>
  <cbc:DocumentCurrencyCode>EUR</cbc:DocumentCurrencyCode>
  <cbc:AccountingCost>4217:2323:2323</cbc:AccountingCost>
  <cbc:BuyerReference>BUYER_REF</cbc:BuyerReference>
  <cac:InvoicePeriod>
-  <cbc:StartDate>2022-02-09</cbc:StartDate>
+  <cbc:StartDate>2022-02-10</cbc:StartDate>
  </cac:InvoicePeriod>
  <cac:OrderReference>
   <cbc:ID>5009567</cbc:ID>
@@ -82,7 +82,7 @@
   </cac:Party>
  </cac:AccountingCustomerParty>
  <cac:Delivery>
-  <cbc:ActualDeliveryDate>2022-02-09</cbc:ActualDeliveryDate>
+  <cbc:ActualDeliveryDate>2022-02-10</cbc:ActualDeliveryDate>
   <cac:DeliveryLocation>
    <cac:Address>
     <cbc:StreetName>Delivery street 2</cbc:StreetName>
@@ -135,7 +135,7 @@
   <cbc:InvoicedQuantity unitCode="C62">1.00</cbc:InvoicedQuantity>
   <cbc:LineExtensionAmount currencyID="EUR">10.00</cbc:LineExtensionAmount>
   <cac:InvoicePeriod>
-   <cbc:StartDate>2022-02-09</cbc:StartDate>
+   <cbc:StartDate>2022-02-10</cbc:StartDate>
   </cac:InvoicePeriod>
   <cac:Item>
    <cbc:Description>Product Description</cbc:Description>

@@ -219,32 +219,33 @@ class TaxCategory implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize tax category
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $taxCategory = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $taxCategory->id = $keyValue[Schema::CBC . 'ID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Name'])) {
+        if (isset($keyValue[Schema::CBC . 'Name'])) {
             $taxCategory->name = $keyValue[Schema::CBC . 'Name'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Percent'])) {
+        if (isset($keyValue[Schema::CBC . 'Percent'])) {
             $taxCategory->percent = $keyValue[Schema::CBC . 'Percent'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxExemptionReasonCode'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxExemptionReasonCode'])) {
             $taxCategory->taxExemptionReasonCode = $keyValue[Schema::CBC . 'TaxExemptionReasonCode'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxExemptionReason'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxExemptionReason'])) {
             $taxCategory->taxExemptionReason = $keyValue[Schema::CBC . 'TaxExemptionReason'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxScheme'])) {
             $taxCategory->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
         }
 

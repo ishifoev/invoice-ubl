@@ -43,12 +43,13 @@ class FinancialInstitutionBranch implements XmlSerializable, XmlDeserializable
      /**
      * Deserialize XML FinancialInstitutionBranch
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $financial = new self();
 
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $financial->id = $keyValue[Schema::CBC . 'ID'];
         }
         return $financial;

@@ -71,16 +71,17 @@ class OrderReference implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize OrderReference
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $orderReference = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $orderReference->id = $keyValue[Schema::CBC . 'ID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'SalesOrderID'])) {
+        if (isset($keyValue[Schema::CBC . 'SalesOrderID'])) {
             $orderReference->salesOrderId = $keyValue[Schema::CBC . 'SalesOrderID'];
         }
         return $orderReference;
