@@ -297,45 +297,46 @@ class InvoiceLine implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Invoice Line
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $invoiceLine = new self();
         
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $invoiceLine->id = $keyValue[Schema::CBC . 'ID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Note'])) {
+        if (isset($keyValue[Schema::CBC . 'Note'])) {
             $invoiceLine->note = $keyValue[Schema::CBC . 'Note'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'InvoicedQuantity']) && isset($keyValue[Schema::CBC . 'LineExtensionAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'InvoicedQuantity']) && isset($keyValue[Schema::CBC . 'LineExtensionAmount'])) {
             $invoiceLine->invoicedQuantity = $keyValue[Schema::CBC . 'InvoicedQuantity'];
             $invoiceLine->lineExtensionAmount = $keyValue[Schema::CBC . 'LineExtensionAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC .'AccountingCostCode'])) {
+        if (isset($keyValue[Schema::CBC .'AccountingCostCode'])) {
             $invoiceLine->accountingCostCode = $keyValue[Schema::CBC . 'AccountingCostCode'];
         }
 
-        if(isset($keyValue[Schema::CBC .'AccountingCost'])) {
+        if (isset($keyValue[Schema::CBC .'AccountingCost'])) {
             $invoiceLine->accountingCost = $keyValue[Schema::CBC . 'AccountingCost'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'InvoicePeriod'])) {
+        if (isset($keyValue[Schema::CAC . 'InvoicePeriod'])) {
             $invoiceLine->invoicePeriod = $keyValue[Schema::CAC . 'InvoicePeriod'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxTotal'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxTotal'])) {
             $invoiceLine->taxTotal = $keyValue[Schema::CAC . 'TaxTotal'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'Item'])) {
+        if (isset($keyValue[Schema::CAC . 'Item'])) {
             $invoiceLine->item = $keyValue[Schema::CAC . 'Item'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'Price'])) {
+        if (isset($keyValue[Schema::CAC . 'Price'])) {
             $invoiceLine->price = $keyValue[Schema::CAC . 'Price'];
         }
 

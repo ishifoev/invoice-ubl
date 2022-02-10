@@ -78,16 +78,17 @@ class InvoicePeriod implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Invoice Period
      */
-    static function xmlDeserialze(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $invoicePeriod = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'StartDate'])) {
+        if (isset($keyValue[Schema::CBC . 'StartDate'])) {
             $invoicePeriod->startDate = $keyValue[Schema::CBC . 'StartDate'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'EndDate'])) {
+        if (isset($keyValue[Schema::CBC . 'EndDate'])) {
             $invoicePeriod->endDate = $keyValue[Schema::CBC . 'EndDate'];
         }
         
