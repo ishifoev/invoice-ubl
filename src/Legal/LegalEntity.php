@@ -5,8 +5,10 @@ namespace Ishifoev\Invoice\Legal;
 use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class LegalEntity implements XmlSerializable
+class LegalEntity implements XmlSerializable, XmlDeserializable
 {
     private $registrationName;
     private $companyId;
@@ -83,5 +85,24 @@ class LegalEntity implements XmlSerializable
                 'attributes' => $this->companyIdAttributes
             ]);
         }
+    }
+
+    /**
+     * Deserialize Legal Entity
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $legalEntity = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'RegistrationName'])) {
+            $legalEntity->registrationName = $keyValue[Schema::CBC . 'RegistrationName'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'CompanyID'])) {
+            $legalEntity->companyId = $keyValue[Schema::CBC . 'CompanyID'];
+        }
+        
+        return $legalEntity;
     }
 }

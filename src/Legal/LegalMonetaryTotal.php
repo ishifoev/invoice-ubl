@@ -6,8 +6,10 @@ use Sabre\Xml\Writer;
 use Sabre\Xml\XmlSerializable;
 use Ishifoev\Invoice\Schema;
 use Ishifoev\Invoice\Invoice\GenerateInvoice;
+use Sabre\Xml\Reader;
+use Sabre\Xml\XmlDeserializable;
 
-class LegalMonetaryTotal implements XmlSerializable
+class LegalMonetaryTotal implements XmlSerializable, XmlDeserializable
 {
     private $lineExtensionAmount;
     private $taxExclusiveAmount;
@@ -154,5 +156,36 @@ class LegalMonetaryTotal implements XmlSerializable
                 ]
             ],
         ]);
+    }
+
+    /**
+     * Deserialize LegalMonetaryTotal
+     */
+    static function xmlDeserialize(Reader $reader) {
+        $legalMonetaryTotal = new self();
+
+        $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+
+        if(isset($keyValue[Schema::CBC . 'LineExtensionAmount'])) {
+            $legalMonetaryTotal->lineExtensionAmount = $keyValue[Schema::CBC . 'LineExtensionAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'TaxExclusiveAmount'])) {
+            $legalMonetaryTotal->taxExclusiveAmount = $keyValue[Schema::CBC . 'TaxExclusiveAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'TaxInclusiveAmount'])) {
+            $legalMonetaryTotal->taxInclusiveAmount = $keyValue[Schema::CBC . 'TaxInclusiveAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'AllowanceTotalAmount'])) {
+            $legalMonetaryTotal->allowanceTotalAmount = $keyValue[Schema::CBC . 'AllowanceTotalAmount'];
+        }
+
+        if(isset($keyValue[Schema::CBC . 'PayableAmount'])) {
+            $legalMonetaryTotal->payableAmount = $keyValue[Schema::CBC . 'PayableAmount'];
+        }
+
+        return $legalMonetaryTotal;
     }
 }
