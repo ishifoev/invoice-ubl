@@ -96,20 +96,21 @@ class PayeeFinancialAccount implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Payee Financial Account
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $payeeFinancial = new self();
 
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $financial->id = $keyValue[Schema::CBC . 'ID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Name'])) {
+        if (isset($keyValue[Schema::CBC . 'Name'])) {
             $financial->name = $keyValue[Schema::CBC . 'Name'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'FinancialInstitutionBranch'])) {
+        if (isset($keyValue[Schema::CAC . 'FinancialInstitutionBranch'])) {
             $financial->financialInstitutionBranch = $keyValue[Schema::CAC . 'FinancialInstitutionBranch'];
         }
 

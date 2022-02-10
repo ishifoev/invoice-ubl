@@ -195,34 +195,35 @@ class AllowanceCharge implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize AllowanceCharge
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $allowanceCharge = new self();
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
-        if(isset($keyValue[Schema::CBC . 'ChargeIndicator'])) {
+        if (isset($keyValue[Schema::CBC . 'ChargeIndicator'])) {
             $allowanceCharge->chargeIndicator = $keyValue[Schema::CBC . 'ChargeIndicator'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'AllowanceChargeReasonCode'])) {
+        if (isset($keyValue[Schema::CBC . 'AllowanceChargeReasonCode'])) {
             $allowanceCharge->allowanceChargeReasonCode = $keyValue[Schema::CBC . 'AllowanceChargeReasonCode'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'AllowanceChargeReason'])) {
+        if (isset($keyValue[Schema::CBC . 'AllowanceChargeReason'])) {
             $allowanceCharge->allowanceChargeReason = $keyValue[Schema::CBC . 'AllowanceChargeReason'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'MultiplierFactorNumeric'])) {
+        if (isset($keyValue[Schema::CBC . 'MultiplierFactorNumeric'])) {
             $allowanceCharge->multiplierFactorNumeric = $keyValue[Schema::CBC . 'MultiplierFactorNumeric'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Amount'])) {
+        if (isset($keyValue[Schema::CBC . 'Amount'])) {
             $allowanceCharge->amount = $keyValue[Schema::CBC . 'Amount'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxCategory'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxCategory'])) {
             $allowanceCharge->taxCategory = $keyValue[Schema::CAC . 'TaxCategory'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'BaseAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'BaseAmount'])) {
             $allowanceCharge->baseAmount = $keyValue[Schema::CBC . 'BaseAmount'];
         }
 

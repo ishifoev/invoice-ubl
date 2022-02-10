@@ -138,26 +138,27 @@ class Item implements XmlSerializable, XmlDeserializable
      /**
      * Deserialize Item
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $item = new self();
         $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
-        if(isset($keyValue[Schema::CBC . 'Description'])) {
+        if (isset($keyValue[Schema::CBC . 'Description'])) {
             $item->description = $keyValue[Schema::CBC . 'Description'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Name'])) {
+        if (isset($keyValue[Schema::CBC . 'Name'])) {
             $item->name = $keyValue[Schema::CBC . 'Name'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'BuyersItemIdentification' . [ Schema::CBC . 'ID']])) {
+        if (isset($keyValue[Schema::CAC . 'BuyersItemIdentification' . [ Schema::CBC . 'ID']])) {
             $item->buyersItemIdentification = $keyValue[Schema::CAC . 'BuyersItemIdentification' . [ Schema::CBC . 'ID']];
         }
 
-        if(isset($keyValue[Schema::CAC . 'SellersItemIdentification' . [ Schema::CBC . 'ID']])) {
+        if (isset($keyValue[Schema::CAC . 'SellersItemIdentification' . [ Schema::CBC . 'ID']])) {
             $item->sellersItemIdentification = $keyValue[Schema::CAC . 'SellersItemIdentification' . [ Schema::CBC . 'ID']];
         }
 
-        if(isset($keyValue[Schema::CAC . 'ClassifiedTaxCategory'])) {
+        if (isset($keyValue[Schema::CAC . 'ClassifiedTaxCategory'])) {
             $item->classifiedTaxCategory = $keyValue[Schema::CAC . 'ClassifiedTaxCategory'];
         }
 

@@ -136,21 +136,22 @@ class ClassifiedTaxCategory implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Classified Tax Category
      */
-    static function xmlDeserialize(Reader $reader) {
-       $classifiedTaxCategory = new self();
+    static function xmlDeserialize(Reader $reader)
+    {
+        $classifiedTaxCategory = new self();
 
-       $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
+        $keyValue =  Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-       if(isset($keyValue[Schema::CBC . 'ID'])) {
-          $classifiedTaxCategory->id = $keyValue[Schema::CBC . 'ID'];
-       }
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
+            $classifiedTaxCategory->id = $keyValue[Schema::CBC . 'ID'];
+        }
 
-       if(isset($keyValue[Schema::CBC . 'Percent'])) {
-          $classifiedTaxCategory->percent = $keyValue[Schema::CBC . 'Percent'];
-       }
-       if(isset($keyValue[Schema::CAC . 'TaxScheme'])) {
-          $classifiedTaxCategory->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
-       }
-       return $classifiedTaxCategory;
+        if (isset($keyValue[Schema::CBC . 'Percent'])) {
+            $classifiedTaxCategory->percent = $keyValue[Schema::CBC . 'Percent'];
+        }
+        if (isset($keyValue[Schema::CAC . 'TaxScheme'])) {
+            $classifiedTaxCategory->taxScheme = $keyValue[Schema::CAC . 'TaxScheme'];
+        }
+        return $classifiedTaxCategory;
     }
 }

@@ -94,16 +94,17 @@ class Price implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Prices
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $price = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'PriceAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'PriceAmount'])) {
             $price->priceAmount = $keyValue[Schema::CBC . 'PriceAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'BaseQuantity'])) {
+        if (isset($keyValue[Schema::CBC . 'BaseQuantity'])) {
             $price->baseQuantity = $keyValue[Schema::CBC . 'BaseQuantity'];
         }
         return $price;

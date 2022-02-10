@@ -42,12 +42,13 @@ class TaxScheme implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize XML TaxScheme
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $taxScheme = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $taxScheme->id = $keyValue[Schema::CBC . 'ID'];
         }
         return $taxScheme;

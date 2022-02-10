@@ -138,20 +138,21 @@ class PaymentMeans implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize PaymentMeans
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $paymentMeans = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'PaymentMeansCode'])) {
+        if (isset($keyValue[Schema::CBC . 'PaymentMeansCode'])) {
             $paymentMeans->paymentMeansCode = $keyValue[Schema::CBC . 'PaymentMeansCode'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'PaymentID'])) {
+        if (isset($keyValue[Schema::CBC . 'PaymentID'])) {
             $paymentMeans->paymentId = $keyValue[Schema::CBC . 'PaymentID'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PayeeFinancialAccount'])) {
+        if (isset($keyValue[Schema::CAC . 'PayeeFinancialAccount'])) {
             $paymentMeans->payeeFinancialAccount = $keyValue[Schema::CAC . 'PayeeFinancialAccount'];
         }
         return $paymentMeans;

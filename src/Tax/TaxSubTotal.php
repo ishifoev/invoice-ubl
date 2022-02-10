@@ -143,24 +143,25 @@ class TaxSubTotal implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Tax Subtotal
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $taxSubtotal = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'TaxableAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxableAmount'])) {
             $taxSubtotal->taxableAmount = $keyValue[Schema::CBC . 'TaxableAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxAmount'])) {
             $taxSubtotal->taxAmount = $keyValue[Schema::CBC . 'TaxAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Percent'])) {
+        if (isset($keyValue[Schema::CBC . 'Percent'])) {
             $taxSubtotal->percent = $keyValue[Schema::CBC . 'Percent'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxCategory'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxCategory'])) {
             $taxSubtotal->taxCategory = $keyValue[Schema::CBC . 'TaxCategory'];
         }
         return $taxSubtotal;

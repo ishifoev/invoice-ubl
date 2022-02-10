@@ -161,28 +161,29 @@ class LegalMonetaryTotal implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize LegalMonetaryTotal
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $legalMonetaryTotal = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'LineExtensionAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'LineExtensionAmount'])) {
             $legalMonetaryTotal->lineExtensionAmount = $keyValue[Schema::CBC . 'LineExtensionAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxExclusiveAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxExclusiveAmount'])) {
             $legalMonetaryTotal->taxExclusiveAmount = $keyValue[Schema::CBC . 'TaxExclusiveAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxInclusiveAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxInclusiveAmount'])) {
             $legalMonetaryTotal->taxInclusiveAmount = $keyValue[Schema::CBC . 'TaxInclusiveAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'AllowanceTotalAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'AllowanceTotalAmount'])) {
             $legalMonetaryTotal->allowanceTotalAmount = $keyValue[Schema::CBC . 'AllowanceTotalAmount'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'PayableAmount'])) {
+        if (isset($keyValue[Schema::CBC . 'PayableAmount'])) {
             $legalMonetaryTotal->payableAmount = $keyValue[Schema::CBC . 'PayableAmount'];
         }
 
