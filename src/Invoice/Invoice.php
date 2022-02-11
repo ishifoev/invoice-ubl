@@ -721,108 +721,109 @@ class Invoice implements XmlSerializable, XmlDeserializable
     /**
      * Deserialize Invoice
      */
-    static function xmlDeserialize(Reader $reader) {
+    static function xmlDeserialize(Reader $reader)
+    {
         $invoice = new self();
 
         $keyValue = Sabre\Xml\Element\KeyValue::xmlDeserialize($reader);
 
-        if(isset($keyValue[Schema::CBC . 'UBLVersionID'])) {
+        if (isset($keyValue[Schema::CBC . 'UBLVersionID'])) {
             $invoice->UBLVersionID = $keyValue[Schema::CBC . 'UBLVersionID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'CustomizationID'])) {
+        if (isset($keyValue[Schema::CBC . 'CustomizationID'])) {
             $invoice->customizationID = $keyValue[Schema::CBC . 'CustomizationID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'ProfileID'])) {
+        if (isset($keyValue[Schema::CBC . 'ProfileID'])) {
             $invoice->profileID = $keyValue[Schema::CBC . 'ProfileID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'ID'])) {
+        if (isset($keyValue[Schema::CBC . 'ID'])) {
             $invoice->id = $keyValue[Schema::CBC . 'ID'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'CopyIndicator'])) {
+        if (isset($keyValue[Schema::CBC . 'CopyIndicator'])) {
             $invoice->copyIndicator = $keyValue[Schema::CBC . 'CopyIndicator'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'IssueDate'])) {
+        if (isset($keyValue[Schema::CBC . 'IssueDate'])) {
             $invoice->issueDate = $keyValue[Schema::CBC . 'IssueDate'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'DueDate'])) {
+        if (isset($keyValue[Schema::CBC . 'DueDate'])) {
             $invoice->dueDate = $keyValue[Schema::CBC . 'DueDate'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'InvoiceTypeCode'])) {
+        if (isset($keyValue[Schema::CBC . 'InvoiceTypeCode'])) {
             $invoice->invoiceTypeCode = $keyValue[Schema::CBC . 'InvoiceTypeCode'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'Note'])) {
+        if (isset($keyValue[Schema::CBC . 'Note'])) {
             $invoice->note = $keyValue[Schema::CBC . 'Note'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'TaxPointDate'])) {
+        if (isset($keyValue[Schema::CBC . 'TaxPointDate'])) {
             $invoice->taxPointDate = $keyValue[Schema::CBC . 'TaxPointDate'];
         }
 
-        if(isset($keyValue[Schema::CBC . 'DocumentCurrencyCode'])) {
+        if (isset($keyValue[Schema::CBC . 'DocumentCurrencyCode'])) {
             $invoice->documentCurrencyCode = $keyValue[Schema::CBC . 'DocumentCurrencyCode'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'ContractDocumentReference'])) {
+        if (isset($keyValue[Schema::CAC . 'ContractDocumentReference'])) {
             $invoice->contractDocumentReference = $keyValue[Schema::CAC . 'ContractDocumentReference'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'InvoicePeriod'])) {
+        if (isset($keyValue[Schema::CAC . 'InvoicePeriod'])) {
             $invoice->invoicePeriod = $keyValue[Schema::CAC . 'InvoicePeriod'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'OrderReference'])) {
+        if (isset($keyValue[Schema::CAC . 'OrderReference'])) {
             $invoice->orderReference = $keyValue[Schema::CAC . 'OrderReference'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'AdditionalDocumentReference'])) {
+        if (isset($keyValue[Schema::CAC . 'AdditionalDocumentReference'])) {
             $invoice->additionalDocumentReferences = $keyValue[Schema::CAC . 'AdditionalDocumentReference'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'AdditionalDocumentReference'])) {
+        if (isset($keyValue[Schema::CAC . 'AdditionalDocumentReference'])) {
             $invoice->additionalDocumentReferences = $keyValue[Schema::CAC . 'AdditionalDocumentReference'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'AccountingSupplierParty' . [Schema::CAC . "Party"]])) {
+        if (isset($keyValue[Schema::CAC . 'AccountingSupplierParty' . [Schema::CAC . "Party"]])) {
             $invoice->accountingSupplierParty = $keyValue[Schema::CAC . 'AccountingSupplierParty' . [Schema::CAC . "Party"]];
         }
 
-        if(isset($keyValue[Schema::CAC . 'AccountingCustomerParty' . [Schema::CAC . "Party"]])) {
+        if (isset($keyValue[Schema::CAC . 'AccountingCustomerParty' . [Schema::CAC . "Party"]])) {
             $invoice->AccountingCustomerParty = $keyValue[Schema::CAC . 'AccountingCustomerParty' . [Schema::CAC . "Party"]];
         }
 
-        if(isset($keyValue[Schema::CAC . 'Delivery'])) {
+        if (isset($keyValue[Schema::CAC . 'Delivery'])) {
             $invoice->delivery = $keyValue[Schema::CAC . 'Delivery'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PaymentMeans'])) {
+        if (isset($keyValue[Schema::CAC . 'PaymentMeans'])) {
             $invoice->paymentMeans = $keyValue[Schema::CAC . 'PaymentMeans'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'PaymentTerms'])) {
+        if (isset($keyValue[Schema::CAC . 'PaymentTerms'])) {
             $invoice->paymentTerms = $keyValue[Schema::CAC . 'PaymentTerms'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'AllowanceCharge'])) {
+        if (isset($keyValue[Schema::CAC . 'AllowanceCharge'])) {
             $invoice->allowanceCharges = $keyValue[Schema::CAC . 'AllowanceCharge'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'TaxTotal'])) {
+        if (isset($keyValue[Schema::CAC . 'TaxTotal'])) {
             $invoice->taxTotal = $keyValue[Schema::CAC . 'TaxTotal'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'LegalMonetaryTotal'])) {
+        if (isset($keyValue[Schema::CAC . 'LegalMonetaryTotal'])) {
             $invoice->legalMonetaryTotal = $keyValue[Schema::CAC . 'LegalMonetaryTotal'];
         }
 
-        if(isset($keyValue[Schema::CAC . 'InnvoiceLine'])) {
+        if (isset($keyValue[Schema::CAC . 'InnvoiceLine'])) {
             $invoice->invoiceLines = $keyValue[Schema::CAC . 'InnvoiceLine'];
         }
         return $invoice;
